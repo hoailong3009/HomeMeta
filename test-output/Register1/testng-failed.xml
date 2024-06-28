@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Register1]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="HomeMeta.PageObjects.Listeners"/>
+  </listeners>
+  <test thread-count="5" name="Register(failed)">
+    <parameter name="lastName" value="Krywenko"/>
+    <parameter name="firstName1" value="Steven"/>
+    <parameter name="firstName2" value="Steven"/>
+    <parameter name="pw" value="Test1234@"/>
+    <parameter name="dreNumber2" value="01073207"/>
+    <parameter name="dreNumber1" value="01073207"/>
+    <parameter name="pw2" value="Test1234@"/>
+    <parameter name="pw1" value="Test1234@"/>
+    <parameter name="firstName" value="Alex"/>
+    <parameter name="email2" value="longk25@mailinator.com"/>
+    <parameter name="email1" value="longk21@mailinator.com"/>
+    <parameter name="dreNumber" value="01368008"/>
+    <parameter name="lastName1" value="Ruiz"/>
+    <parameter name="lastName2" value="Ruiz"/>
+    <parameter name="email" value="longk199@mailinator.com"/>
+    <classes>
+      <class name="HomeMeta.PageObjects.RegisterAgent">
+        <methods>
+          <include name="Test" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- HomeMeta.PageObjects.RegisterAgent -->
+    </classes>
+  </test> <!-- Register(failed) -->
+</suite> <!-- Failed suite [Register1] -->
