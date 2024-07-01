@@ -21,7 +21,7 @@ public class CreateCampaign extends BaseTest {
 	@DataProvider
 	public Object[][] getData() throws IOException {
 		List<HashMap<String, String>> data = getJsonData(
-				System.getProperty("user.dir") + "/src/main/java/HomeMeta/data/Data.json");
+				System.getProperty("user.dir") + "/src/main/java/HomeMeta/data/DataLogin.json");
 		return new Object[][] { { data.get(0) } };
 	}
 }

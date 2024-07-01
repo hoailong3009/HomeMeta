@@ -51,7 +51,7 @@ public class RegisterAgent1 extends BaseTest {
 	@DataProvider
 	public Object[][] getData() throws IOException {
 		List<HashMap<String, String>> data = getJsonData(
-				System.getProperty("user.dir") + "/src/main/java/HomeMeta/data/Data.json");
+				System.getProperty("user.dir") + "/src/main/java/HomeMeta/data/DataRegister.json");
 		return new Object[][] { { data.get(0) } };
 	}
 

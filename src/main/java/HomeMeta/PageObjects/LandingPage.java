@@ -181,6 +181,8 @@ public class LandingPage extends AbstractComponent {
 
 		waitForElementToApear(btnViewOrder1);
 		btnViewOrder.click();
+		WebElement Element2 = driver.findElement(By.xpath("//h2[normalize-space()='Past Orders']"));
+		js.executeScript("arguments[0].scrollIntoView();", Element2);
 	}
 
 	public void goTo() {
