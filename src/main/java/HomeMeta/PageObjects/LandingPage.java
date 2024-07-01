@@ -103,9 +103,13 @@ public class LandingPage extends AbstractComponent {
 
 	By btnSubmit1 = By.xpath("//button[normalize-space()='Submit Order']");
 
+	@FindBy(xpath = "//span[normalize-space()='View Orders']")
 	WebElement btnViewOrder;
-	@FindBy(xpath = "//a[@href='/agent-report']//p")
 	By btnViewOrder1 = By.xpath("//span[normalize-space()='View Orders']");
+
+	@FindBy(xpath = "(//button[@type='button'])[9]")
+	WebElement btnCampaign;
+	By btnCampaign1 = By.xpath("(//button[@type='button'])[9]");
 
 	private List<WebElement> roleName;
 
@@ -171,6 +175,9 @@ public class LandingPage extends AbstractComponent {
 
 		waitForElementToApear(btnSubmit1);
 		btnSubmit.click();
+
+		waitForElementToApear(btnCampaign1);
+		btnCampaign.click();
 
 		waitForElementToApear(btnViewOrder1);
 		btnViewOrder.click();
