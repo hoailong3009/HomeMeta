@@ -14,6 +14,8 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.BeforeMethod;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -39,8 +41,10 @@ public class BaseTest {
 			driver = new ChromeDriver();
 
 		} else if (browserName.equalsIgnoreCase("firefox")) {
-
+			WebDriverManager.firefoxdriver().setup();
+			driver = new FirefoxDriver();
 		} else if (browserName.equalsIgnoreCase("edge")) {
+			driver = new EdgeDriver();
 
 		}
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
@@ -50,9 +54,7 @@ public class BaseTest {
 
 	public List<HashMap<String, String>> getJsonData(String filePath) throws IOException {
 
-		// read json to string
 		String jsonContent = FileUtils.readFileToString(new File(filePath), StandardCharsets.UTF_8);
-		// String to HashMap - Jackson Bind
 		ObjectMapper mapper = new ObjectMapper();
 		List<HashMap<String, String>> data = mapper.readValue(jsonContent,
 				new TypeReference<List<HashMap<String, String>>>() {
@@ -61,7 +63,7 @@ public class BaseTest {
 
 	}
 
-	public String getScreenShot(String testcaseName, WebDriver driver) throws IOException {
+	public String getScreenshot(String testcaseName, WebDriver driver) throws IOException {
 
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File source = ts.getScreenshotAs(OutputType.FILE);

@@ -7,8 +7,8 @@
   <test name="Register">
 
     <classes>
-      
-      <class name="HomeMeta.PageObjects.RegisterAgent"/>
+       
+      <class name="HomeMeta.PageObjects.CreateCampaign"/>
 
     </classes>
   </test> <!-- Test -->

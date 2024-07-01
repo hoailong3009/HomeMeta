@@ -76,8 +76,40 @@ public class LandingPage extends AbstractComponent {
 	@FindBy(xpath = "//span[normalize-space()='Go Back']")
 	WebElement btnGoBack;
 
+	@FindBy(xpath = "//a[@href='/agent-campaigns/?tab=CAMPAIGNS_FORM']")
+	WebElement goCampaign;
+
+	@FindBy(xpath = "//div[@name='neighborhoods_mailing_list_ids']//div[@class='ant-select-selection-overflow']")
+	WebElement clickSelect;
+
+	@FindBy(xpath = "//div[@class='ant-select-item ant-select-item-option ant-select-item-option-active']//div[@class='ant-select-item-option-content']")
+	WebElement chooseML;
+
+	@FindBy(xpath = "//div[@name='audience_ids']//div[@class='ant-select-selection-overflow']")
+	WebElement clickTA;
+	@FindBy(xpath = "//div[contains(text(),'All Homes')]")
+	WebElement chooseTA;
+
+	// @FindBy(xpath = "(//input[@id='rc_select_5'])[1]")
+	// WebElement clickLandingPage;
+	// @FindBy(xpath = "//div[contains(text(),'@@2')]")
+	// WebElement chooseLandingPage;
+
+	@FindBy(xpath = "//p[@title='name']")
+	WebElement chooseTemplate;
+
+	@FindBy(xpath = "//button[normalize-space()='Submit Order']")
+	WebElement btnSubmit;
+
+	By btnSubmit1 = By.xpath("//button[normalize-space()='Submit Order']");
+
+	WebElement btnViewOrder;
 	@FindBy(xpath = "//a[@href='/agent-report']//p")
+	By btnViewOrder1 = By.xpath("//span[normalize-space()='View Orders']");
+
 	private List<WebElement> roleName;
+
+	By campaignMenu = By.xpath("//a[@href='/agent-campaigns/?tab=CAMPAIGNS_FORM']");
 
 	public void regisAgentRole(String email, String password, String firstName, String lastName, String dreNumber,
 			String numberPhone, String linkURL) throws InterruptedException {
@@ -106,8 +138,46 @@ public class LandingPage extends AbstractComponent {
 		creatAccount.click();
 	}
 
+	public void goToCampain() throws InterruptedException {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+
+		goCampaign.click();
+		Thread.sleep(2000);
+		WebElement Element = driver.findElement(By.xpath("//input[@id='rc_select_5']"));
+		js.executeScript("arguments[0].scrollIntoView();", Element);
+		Thread.sleep(800);
+		clickSelect.click();
+		chooseML.click();
+		Thread.sleep(1500);
+
+		clickSelect.click();
+		Thread.sleep(1000);
+
+		clickTA.click();
+		Thread.sleep(2000);
+
+		chooseTA.click();
+		Thread.sleep(3000);
+
+		// clickLandingPage.click();
+		// Thread.sleep(2000);
+		// chooseLandingPage.click();
+
+		chooseTemplate.click();
+		Thread.sleep(1000);
+
+		WebElement Element1 = driver.findElement(By.xpath("//button[normalize-space()='Submit Order']"));
+		js.executeScript("arguments[0].scrollIntoView();", Element1);
+
+		waitForElementToApear(btnSubmit1);
+		btnSubmit.click();
+
+		waitForElementToApear(btnViewOrder1);
+		btnViewOrder.click();
+	}
+
 	public void goTo() {
-		driver.get("https://staging-realestate.homemeta.io/register");
+		driver.get("https://staging-realestate.homemeta.io");
 
 	}
 

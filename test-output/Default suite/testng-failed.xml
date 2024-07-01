@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="HomeMeta.PageObjects.RegisterAgent1">
+      <class name="HomeMeta.PageObjects.CreateCampaign">
         <methods>
           <include name="launchApplication"/>
-          <include name="RegisterAgent" invocation-numbers="0"/>
+          <include name="CreateCampagin" invocation-numbers="0"/>
         </methods>
-      </class> <!-- HomeMeta.PageObjects.RegisterAgent1 -->
+      </class> <!-- HomeMeta.PageObjects.CreateCampaign -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
