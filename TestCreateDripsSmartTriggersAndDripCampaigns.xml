@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite parallel="tests" name="Create DripsSmartStriggers and DripsCampaigns" >
+	<listeners>
+		<listener class-name="HomeMeta.TestComponents.Listeners"/>
+	</listeners>
+  <test thread-count="5" name="Create DripsSmartStriggers">
+
+    <classes>
+       
+      <class name="HomeMeta.PageObjects.CreateDripsSmartStriggers"/>
+
+    </classes>
+  </test> <!-- Test -->
+  <test thread-count="5" name="Create DripsCampaigns">
+
+    <classes>
+       
+      <class name="HomeMeta.PageObjects.CreateDripsCampaigns"/>
+
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

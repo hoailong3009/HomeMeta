@@ -90,18 +90,14 @@ public class LandingPage extends AbstractComponent {
 	@FindBy(xpath = "//div[contains(text(),'All Homes')]")
 	WebElement chooseTA;
 
-	// @FindBy(xpath = "(//input[@id='rc_select_5'])[1]")
-	// WebElement clickLandingPage;
-	// @FindBy(xpath = "//div[contains(text(),'@@2')]")
-	// WebElement chooseLandingPage;
-
 	@FindBy(xpath = "//p[@title='name']")
 	WebElement chooseTemplate;
 
 	@FindBy(xpath = "//button[normalize-space()='Submit Order']")
 	WebElement btnSubmit;
-
 	By btnSubmit1 = By.xpath("//button[normalize-space()='Submit Order']");
+
+	By addDrip1 = By.xpath("//span[@class='text']");
 
 	@FindBy(xpath = "//span[normalize-space()='View Orders']")
 	WebElement btnViewOrder;
@@ -190,6 +186,11 @@ public class LandingPage extends AbstractComponent {
 
 	}
 
+	public void goToRegister() {
+		driver.get("https://staging-realestate.homemeta.io/register/");
+
+	}
+
 	public void verifyEmail(String email) throws InterruptedException {
 		driver.get("https://www.mailinator.com/");
 		emailMLNT.sendKeys(email);
@@ -216,8 +217,10 @@ public class LandingPage extends AbstractComponent {
 	}
 
 	public Boolean VerifyRole(String roleName1) {
+
 		Boolean match = roleName.stream().anyMatch(role -> role.getText().equalsIgnoreCase(roleName1));
 		return match;
 
 	}
+
 }

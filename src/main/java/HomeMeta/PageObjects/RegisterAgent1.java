@@ -19,8 +19,8 @@ public class RegisterAgent1 extends BaseTest {
 
 	@Test(dataProvider = "getData", retryAnalyzer = Retry.class)
 	public void RegisterAgent(HashMap<String, String> input) throws IOException, InterruptedException {
-
 		String roleName1 = "Agent";
+		landingPage.goToRegister();
 		landingPage.regisAgentRole(input.get("email"), input.get("password"), input.get("firstName"),
 				input.get("lastName"), input.get("dreNumber"), input.get("numberPhone"), input.get("linkURL"));
 		Thread.sleep(500);
