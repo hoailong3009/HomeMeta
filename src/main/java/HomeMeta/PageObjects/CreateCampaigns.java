@@ -31,6 +31,8 @@ public class CreateCampaigns extends AbstractComponent {
 	WebElement btnLogin;
 	@FindBy(xpath = "//a[normalize-space()='Drip Campaigns']")
 	WebElement menuDripCampaign;
+	By menuDripCampaign1 = By.xpath("//a[normalize-space()='Drip Campaigns']");
+
 	@FindBy(xpath = "//span[normalize-space()='Add New Drip']")
 	WebElement addNewDrip;
 
@@ -148,7 +150,7 @@ public class CreateCampaigns extends AbstractComponent {
 	public void createDripCampaigns(String dripCampaignName) throws InterruptedException {
 
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		Thread.sleep(3000);
+		waitForElementToApear(menuDripCampaign1);
 
 		goToDripCampaign();
 

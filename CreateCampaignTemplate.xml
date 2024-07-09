@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Create Campaign TemPlate" >
+	<listeners>
+		<listener class-name="HomeMeta.TestComponents.Listeners"/>
+	</listeners>
+  <test name="Create Campaign TemPlate">
+
+    <classes>
+       
+      <class name="HomeMeta.PageObjects.CreateCampaign"/>
+
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

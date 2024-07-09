@@ -81,6 +81,8 @@ public class LandingPage extends AbstractComponent {
 
 	@FindBy(xpath = "//div[@name='neighborhoods_mailing_list_ids']//div[@class='ant-select-selection-overflow']")
 	WebElement clickSelect;
+	By selectField = By
+			.xpath("//div[@name='neighborhoods_mailing_list_ids']//div[@class='ant-select-selection-overflow']");
 
 	@FindBy(xpath = "//div[@class='ant-select-item ant-select-item-option ant-select-item-option-active']//div[@class='ant-select-item-option-content']")
 	WebElement chooseML;
@@ -102,6 +104,8 @@ public class LandingPage extends AbstractComponent {
 	@FindBy(xpath = "//span[normalize-space()='View Orders']")
 	WebElement btnViewOrder;
 	By btnViewOrder1 = By.xpath("//span[normalize-space()='View Orders']");
+
+	By btnCreate = By.xpath("//button[normalize-space()='Create Template']");
 
 	@FindBy(xpath = "(//button[@type='button'])[9]")
 	WebElement btnCampaign;
@@ -142,27 +146,25 @@ public class LandingPage extends AbstractComponent {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 
 		goCampaign.click();
-		Thread.sleep(2000);
-		WebElement Element = driver.findElement(By.xpath("//input[@id='rc_select_5']"));
+
+		waitForElementToApear(btnCreate);
+
+		WebElement Element = driver
+				.findElement(By.xpath("//div[@class='field target-field css-21vogu']//label[@class='s-label']"));
 		js.executeScript("arguments[0].scrollIntoView();", Element);
-		Thread.sleep(800);
+		waitForElementToApear(selectField);
 		clickSelect.click();
 		chooseML.click();
+
 		Thread.sleep(1500);
 
 		clickSelect.click();
 		Thread.sleep(1000);
 
 		clickTA.click();
-		Thread.sleep(2000);
 
 		chooseTA.click();
 		Thread.sleep(3000);
-
-		// clickLandingPage.click();
-		// Thread.sleep(2000);
-		// chooseLandingPage.click();
-
 		chooseTemplate.click();
 		Thread.sleep(1000);
 
