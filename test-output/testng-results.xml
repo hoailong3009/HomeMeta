@@ -1,67 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+<testng-results ignored="0" total="2" passed="1" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-07-09T17:12:41 ICT" name="Default suite" finished-at="2024-07-09T17:13:33 ICT" duration-ms="52183">
+  <suite started-at="2024-07-16T15:39:39 ICT" name="Create DripsSmartStriggers and DripsCampaigns" finished-at="2024-07-16T15:40:20 ICT" duration-ms="40946">
     <groups>
     </groups>
-    <test started-at="2024-07-09T17:12:41 ICT" name="Default test" finished-at="2024-07-09T17:13:33 ICT" duration-ms="52183">
-      <class name="HomeMeta.PageObjects.CreateCampaign">
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:HomeMeta.PageObjects.CreateCampaign@4b45a2f5]" started-at="2024-07-09T17:12:41 ICT" name="launchApplication" finished-at="2024-07-09T17:12:47 ICT" duration-ms="6081" status="PASS">
+    <test started-at="2024-07-16T15:39:39 ICT" name="Create DripsSmartStriggers" finished-at="2024-07-16T15:40:19 ICT" duration-ms="40192">
+      <class name="HomeMeta.PageObjects.CreateDripsSmartStriggers">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:HomeMeta.PageObjects.CreateDripsSmartStriggers@ab7395e]" started-at="2024-07-16T15:39:39 ICT" name="launchApplication" finished-at="2024-07-16T15:39:47 ICT" duration-ms="7417" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="CreateCampagin(java.util.HashMap)[pri:0, instance:HomeMeta.PageObjects.CreateCampaign@4b45a2f5]" started-at="2024-07-09T17:12:47 ICT" name="CreateCampagin" data-provider="getData" finished-at="2024-07-09T17:13:33 ICT" duration-ms="45830" status="FAIL">
+        <test-method signature="CreateCampagin(java.util.HashMap)[pri:0, instance:HomeMeta.PageObjects.CreateDripsSmartStriggers@ab7395e]" started-at="2024-07-16T15:39:47 ICT" name="CreateCampagin" data-provider="getData" finished-at="2024-07-16T15:40:19 ICT" duration-ms="32366" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA[{firstName=JOE, lastName=CHEN, password=Test1234@, dreNumber=01458525, numberPhone=0938804901, linkURL=https://staging-realestate.homemeta.io/, email=agentq@mailinator.com}]]>
+                <![CDATA[{password=Test1234@, email=agentq@mailinator.com}]]>
               </value>
             </param>
           </params>
-          <exception class="org.openqa.selenium.NoSuchElementException">
+          <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//p[@title='name']"}
-  (Session info: chrome=126.0.6478.127)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: '4.20.0', revision: '866c76ca80'
-System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '14.2.1', java.version: '17.0.6'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [88f653a089fb1b7cfa34a827d110718c, findElement {using=xpath, value=//p[@title='name']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.127, chrome: {chromedriverVersion: 126.0.6478.126 (d36ace6122e..., userDataDir: /var/folders/xr/mr2fgyjx0sd...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55371}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:55371/devtoo..., se:cdpVersion: 126.0.6478.127, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 88f653a089fb1b7cfa34a827d110718c]]>
+              <![CDATA[expected [false] but found [true]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//p[@title='name']"}
-  (Session info: chrome=126.0.6478.127)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: '4.20.0', revision: '866c76ca80'
-System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '14.2.1', java.version: '17.0.6'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [88f653a089fb1b7cfa34a827d110718c, findElement {using=xpath, value=//p[@title='name']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.127, chrome: {chromedriverVersion: 126.0.6478.126 (d36ace6122e..., userDataDir: /var/folders/xr/mr2fgyjx0sd...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55371}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:55371/devtoo..., se:cdpVersion: 126.0.6478.127, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 88f653a089fb1b7cfa34a827d110718c
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
-at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-at jdk.proxy2/jdk.proxy2.$Proxy13.click(Unknown Source)
-at HomeMeta.PageObjects.LandingPage.goToCampain(LandingPage.java:168)
-at HomeMeta.PageObjects.CreateCampaign.CreateCampagin(CreateCampaign.java:17)
+              <![CDATA[java.lang.AssertionError: expected [false] but found [true]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1578)
+at org.testng.Assert.assertFalse(Assert.java:79)
+at org.testng.Assert.assertFalse(Assert.java:89)
+at HomeMeta.PageObjects.CreateDripsSmartStriggers.CreateCampagin(CreateDripsSmartStriggers.java:23)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -78,25 +46,38 @@ at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 at org.testng.TestRunner.privateRun(TestRunner.java:848)
 at org.testng.TestRunner.run(TestRunner.java:621)
 at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
-at org.testng.TestNG.runSuites(TestNG.java:1114)
-at org.testng.TestNG.run(TestNG.java:1082)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:481)
+at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:58)
+at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:833)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CreateCampagin -->
-      </class> <!-- HomeMeta.PageObjects.CreateCampaign -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+      </class> <!-- HomeMeta.PageObjects.CreateDripsSmartStriggers -->
+    </test> <!-- Create DripsSmartStriggers -->
+    <test started-at="2024-07-16T15:39:39 ICT" name="Create DripsCampaigns" finished-at="2024-07-16T15:40:20 ICT" duration-ms="40946">
+      <class name="HomeMeta.PageObjects.CreateDripsCampaigns">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:HomeMeta.PageObjects.CreateDripsCampaigns@47f9738]" started-at="2024-07-16T15:39:39 ICT" name="launchApplication" finished-at="2024-07-16T15:39:44 ICT" duration-ms="5169" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="CreateCampagin(java.util.HashMap)[pri:0, instance:HomeMeta.PageObjects.CreateDripsCampaigns@47f9738]" started-at="2024-07-16T15:39:44 ICT" name="CreateCampagin" data-provider="getData" finished-at="2024-07-16T15:40:20 ICT" duration-ms="35593" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{password=Test1234@, email=agentq@mailinator.com}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CreateCampagin -->
+      </class> <!-- HomeMeta.PageObjects.CreateDripsCampaigns -->
+    </test> <!-- Create DripsCampaigns -->
+  </suite> <!-- Create DripsSmartStriggers and DripsCampaigns -->
 </testng-results>

@@ -1,22 +1,12 @@
 [
  {
-	 "email" : "agentq@mailinator.com",
+	 "email" : "agentqk1a@mailinator.com",
 	 "password": "Test1234@",
-	 "firstName" : "JOE",
-	 "lastName" : "CHEN",
-	 "dreNumber": "01458525",
-	 "numberPhone": "0938804901",
+	 "firstName" : "Will",
+	 "lastName" : "Beardslee",
+	 "dreNumber": "001907304",
+	 "numberPhone": "0189538500",
 	 "linkURL": "https://staging-realestate.homemeta.io/"
- },
- {
-	 "email" : "longk121@mailinator.com",
-	 "password": "Test1234@",
-	 "firstName" : "Pardis",
-	 "lastName" : "Shooli",
-	 "dreNumber": "0143333",
-	 "numberPhone": "0938804901",
-	 "linkURL": "https://staging-realestate.homemeta.io/"
-	 
  }
 ]
 		

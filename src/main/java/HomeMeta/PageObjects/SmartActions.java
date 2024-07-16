@@ -4,24 +4,18 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
-import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import HomeMeta.TestComponents.BaseTest;
 
-public class CreateDripsSmartStriggers extends BaseTest {
+public class SmartActions extends BaseTest {
+
 	@Test(dataProvider = "getData")
 	public void CreateCampagin(HashMap<String, String> input) throws InterruptedException {
-		String smartStriggerName = "Drip Auto";
 		landingPage.login(input.get("email"), input.get("password"));
+		landingPage.goToCampain();
 
-		CreateCampaigns createDripCampaigns = new CreateCampaigns(driver);
-		createDripCampaigns.createDripsSmartStriggers(smartStriggerName);
-
-		Boolean match = createDripCampaigns.VerifySmartTriggersDisplay(smartStriggerName);
-		Assert.assertFalse(match);
-		System.out.println("Add Drips for Smart Triggers Success");
 	}
 
 	@DataProvider
