@@ -94,22 +94,6 @@ public class CreateCampaigns extends AbstractComponent {
 	@FindBy(xpath = "//h2[normalize-space()]")
 	private List<WebElement> smartTriggersTitles;
 
-	public void goTo() {
-		driver.get("https://staging-realestate.homemeta.io");
-
-	}
-
-	public void goToDripCampaign() {
-		driver.get("https://staging-realestate.homemeta.io/drip-campaigns/?tab=DRIP_CAMPAIGN");
-
-	}
-
-	public void login(String email, String password) {
-		emailLogin.sendKeys(email);
-		pwLogin.sendKeys(password);
-		btnLogin.click();
-	}
-
 	public void createDripsSmartStriggers(String smartStriggerName) throws InterruptedException {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		WebElement Element = driver.findElement(By.xpath("//a[normalize-space()='Drip Campaigns']"));
@@ -182,6 +166,22 @@ public class CreateCampaigns extends AbstractComponent {
 		acceptCookies.click();
 		saveDripCampaign.click();
 
+	}
+
+	public void goTo() {
+		driver.get("https://staging-realestate.homemeta.io");
+
+	}
+
+	public void goToDripCampaign() {
+		driver.get("https://staging-realestate.homemeta.io/drip-campaigns/?tab=DRIP_CAMPAIGN");
+
+	}
+
+	public void login(String email, String password) {
+		emailLogin.sendKeys(email);
+		pwLogin.sendKeys(password);
+		btnLogin.click();
 	}
 
 	public Boolean VerifyDripsCampaignDisplay(String dripCampaignName) {
