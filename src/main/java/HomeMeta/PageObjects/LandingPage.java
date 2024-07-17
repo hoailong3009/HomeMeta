@@ -21,6 +21,8 @@ public class LandingPage extends AbstractComponent {
 		PageFactory.initElements(driver, this);
 	}
 
+	@FindBy(xpath = "//button[@aria-label='Accept cookies']")
+	WebElement acceptCookies;
 	@FindBy(xpath = "//div[@name='user_type']//span[@class='ant-select-selection-search']")
 	WebElement searchRole;
 	@FindBy(xpath = "//div[@class='ant-select-item-option-content'][normalize-space()='AGENT']")
@@ -111,9 +113,27 @@ public class LandingPage extends AbstractComponent {
 	WebElement btnCampaign;
 	By btnCampaign1 = By.xpath("(//button[@type='button'])[9]");
 
+	@FindBy(xpath = "//a[@aria-current='page']")
+	WebElement settingMenu;
+	@FindBy(xpath = "//input[@placeholder='Current Password']")
+	WebElement currentPw;
+	@FindBy(xpath = "//input[@placeholder='Change Password']")
+	WebElement changePw;
+	@FindBy(xpath = "//input[@placeholder='Confirm Password']")
+	WebElement confirmPw1;
+	@FindBy(xpath = "//span[normalize-space()='Save Changes']")
+	WebElement savePw;
+	By savePw1 = By.xpath("//span[normalize-space()='Save Changes']");
+
+	@FindBy(xpath = "//button[normalize-space()='Okay']")
+	WebElement btnOk;
+	By btnOk1 = By.xpath("//button[normalize-space()='Okay']");
+	@FindBy(xpath = "//a[@href='/logout']")
+	WebElement logOut;
 	private List<WebElement> roleName;
 
 	By campaignMenu = By.xpath("//a[@href='/agent-campaigns/?tab=CAMPAIGNS_FORM']");
+	By title = By.xpath("//span[@class='title-content']");
 
 	public void regisAgentRole(String email, String password, String firstName, String lastName, String dreNumber,
 			String numberPhone, String linkURL) throws InterruptedException {
@@ -140,6 +160,26 @@ public class LandingPage extends AbstractComponent {
 		checkbox1.click();
 		checkbox2.click();
 		creatAccount.click();
+	}
+
+	public void changePassword(String password) throws InterruptedException {
+		String rePw = "Long12345@";
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		waitForElementToApear(title);
+
+		driver.get("https://staging-realestate.homemeta.io/settings");
+		WebElement Element = driver.findElement(By.xpath("//input[@placeholder='Current Password']"));
+		js.executeScript("arguments[0].scrollIntoView();", Element);
+		currentPw.sendKeys(password);
+		changePw.sendKeys(rePw);
+		confirmPw1.sendKeys(rePw);
+		acceptCookies.click();
+		waitForElementToApear(savePw1);
+		savePw.click();
+		waitForElementToApear(btnOk1);
+		btnOk.click();
+		logOut.click();
+
 	}
 
 	public void goToCampain() throws InterruptedException {
@@ -181,6 +221,7 @@ public class LandingPage extends AbstractComponent {
 		btnViewOrder.click();
 		WebElement Element2 = driver.findElement(By.xpath("//h2[normalize-space()='Past Orders']"));
 		js.executeScript("arguments[0].scrollIntoView();", Element2);
+
 	}
 
 	public void goTo() {
