@@ -1,0 +1,33 @@
+[
+ {
+	 "email" : "farida@fivermail.com",
+	 "password": "Test1234@",
+	 "firstName" : "Tony",
+	 "lastName" : "English",
+	 "dreNumber": "01248620",
+	 "numberPhone": "0189538500",
+	 "linkURL": "https://staging-realestate.homemeta.io/"
+ },
+ {
+	 "email1": "agent",
+	 "email" : "kon@blondmail.com",
+	 "password": "Test1234@",
+	 "firstName" : "ABC",
+	 "lastName" : "XYZ",
+	 "dreNumber": "020994222",
+	 "numberPhone": "0189538500",
+	 "linkURL": "https://staging-realestate.homemeta.io/"
+ },
+ {
+	 "email1": "agent",
+	 "email" : "agent@blondmail.com",
+	 "password": "Test1234@",
+	 "firstName" : "Jigisha",
+	 "lastName" : "Patel",
+	 "dreNumber": "02099452",
+	 "numberPhone": "0189538500",
+	 "linkURL": "https://staging-realestate.homemeta.io/"
+ }
+]
+		
+		

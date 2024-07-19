@@ -25,20 +25,40 @@ public class LandingPage extends AbstractComponent {
 		PageFactory.initElements(driver, this);
 	}
 
+	@FindBy(xpath = "//input[@placeholder='Admin in charge First Name']")
+	WebElement adFirstname;
+	@FindBy(xpath = "//input[@placeholder='Admin in charge Last Name']")
+	WebElement adLastname;
+	@FindBy(xpath = "//input[@placeholder='Company Name']")
+	WebElement companyName;
+	@FindBy(xpath = "//div[@name='markets']//div[@class='ant-select-selector']")
+	WebElement searchMarket1;
+	@FindBy(xpath = "//input[@placeholder='Broker Agent Email']")
+	WebElement brokerEmail;
+
 	@FindBy(xpath = "//button[@aria-label='Accept cookies']")
 	WebElement acceptCookies;
 	@FindBy(xpath = "//div[@name='user_type']//span[@class='ant-select-selection-search']")
 	WebElement searchRole;
 	@FindBy(xpath = "//div[@class='ant-select-item-option-content'][normalize-space()='AGENT']")
 	WebElement agentRole;
+	@FindBy(xpath = "//div[@class='ant-select-item-option-content'][normalize-space()='MANAGER']")
+	WebElement managerRole;
 	@FindBy(xpath = "//input[@placeholder='First Name']")
 	WebElement firstName1;
 	@FindBy(xpath = "//input[@placeholder='Last Name']")
 	WebElement lastName1;
 	@FindBy(xpath = "//input[@placeholder='DRE Number']")
 	WebElement dreNumber1;
+	@FindBy(xpath = "//div[@class='field dre-field css-edr8nd']//label[@class='s-label']")
+	WebElement lbldreNumber;
+
+	By errDreNumber = By.xpath("//div[normalize-space()='DRE number is already associated with an existing account.']");
+	@FindBy(xpath = "//div[normalize-space()='DRE number is already associated with an existing account.']")
+	WebElement errDreNumber1;
 	@FindBy(xpath = "//div[@name='market']//span[@class='ant-select-selection-search']")
 	WebElement searchMarket;
+
 	@FindBy(xpath = "//div[@class='ant-select-item-option-content'][normalize-space()='CRMLS']")
 	WebElement market;
 	@FindBy(xpath = "//input[@id='phone']")
@@ -47,6 +67,17 @@ public class LandingPage extends AbstractComponent {
 	WebElement url;
 	@FindBy(xpath = "//input[@placeholder='Email']")
 	WebElement email1;
+	@FindBy(xpath = "//div[@class='field email-field css-edr8nd']//label[@class='s-label']")
+	WebElement lblEmail;
+
+	By email2 = By.xpath("//input[@placeholder='Email']");
+
+	@FindBy(xpath = "//div[normalize-space()='Email is already associated with an existing account.']")
+	WebElement erroEmail;
+	By erroEmail1 = By.xpath("//div[normalize-space()='Email is already associated with an existing account.']");
+
+	@FindBy(xpath = "//input[@placeholder='Broker Agent Email']")
+	WebElement emailBroker;
 	@FindBy(xpath = "//input[@placeholder='Password']")
 	WebElement pw1;
 	@FindBy(xpath = "//input[@placeholder='Confirm Password']")
@@ -58,16 +89,41 @@ public class LandingPage extends AbstractComponent {
 	WebElement checkbox2;
 	@FindBy(xpath = "//button[normalize-space()='Create Account']")
 	WebElement creatAccount;
+	@FindBy(xpath = "//div[@class='css-d18fnc']")
+	WebElement errorNotfound;
+	By errorNotfound1 = By.xpath("//div[@class='css-d18fnc']");
 
-	@FindBy(xpath = "//input[@id='login']")
-	WebElement emailMLNT;
-	@FindBy(xpath = "//i[@class='material-icons-outlined f36']")
-	WebElement btnMLNT;
+	@FindBy(xpath = "//div[@name='sub_id']//span[@class='ant-select-selection-search']")
+	WebElement selectSub;
+	By selectSub1 = By.xpath("//div[@name='sub_id']//span[@class='ant-select-selection-search']");
+	@FindBy(xpath = "//div[contains(text(),'Loan Broker - Daily - $50')]")
+	WebElement chooseSub;
+	@FindBy(xpath = "//input[@placeholder='Number of Agents']")
+	WebElement numberAgent;
+	@FindBy(xpath = "//input[@placeholder='CSV URL']")
+	WebElement csvFile;
+	@FindBy(xpath = "//span[normalize-space()='Continue']")
+	WebElement ctnBtn;
+	@FindBy(xpath = "//button[normalize-space()='Continue']")
+	WebElement ctnBtn1;
+	@FindBy(xpath = "//button[normalize-space()='Get my first inbox!']")
+	WebElement btnGetIb;
+
+	@FindBy(xpath = "//input[@id='username']")
+	WebElement inputEmail;
+	By inputEmail1 = By.xpath("//input[@id='username']");
+	@FindBy(xpath = "//button[normalize-space()='Add Inbox']")
+	WebElement btnAddIb;
+
+	@FindBy(xpath = "//span[contains(text(),'noreply@homemeta')]")
+	WebElement getEmail;
+	By getEmail1 = By.xpath("//span[contains(text(),'noreply@homemeta')]");
 	@FindBy(xpath = "//td[normalize-space()='noreply@homemeta.io']")
 	WebElement emailMLNT1;
-	@FindBy(xpath = "//p[normalize-space()='Verify account']")
-	WebElement btnVerify;
-	By lblVerify = By.xpath("//p[normalize-space()='Verify account']");
+
+	@FindBy(xpath = "//a[contains(text(),'Verify account')]")
+	WebElement verifyEmail;
+	By verifyEmail1 = By.xpath("//a[contains(text(),'Verify account')]");
 
 	By emailMLNT2 = By.xpath("//td[normalize-space()='noreply@homemeta.io']");
 
@@ -167,7 +223,16 @@ public class LandingPage extends AbstractComponent {
 	WebElement nameML;
 	@FindBy(xpath = "//span[normalize-space()='ADD MAILING LIST']")
 	WebElement addML;
+	@FindBy(xpath = "//input[@placeholder='Enter Full Name']")
+	WebElement paymentInfo;
+	By paymentInfo1 = By.xpath("//input[@placeholder='Enter Full Name']");
 
+	By okBtn = By.xpath("//button[@type='button']");
+
+	@FindBy(xpath = "(//label[@class='s-label'])[5]")
+	WebElement lbl;
+	@FindBy(xpath = "//div[@class='field email-field css-edr8nd']//label[@class='s-label']")
+	WebElement lbl1;
 	@FindBy(xpath = "//div[@class='css-d18fnc']")
 	WebElement errMessage;
 	By errMessage1 = By.xpath("//div[@class='css-d18fnc']");
@@ -180,7 +245,8 @@ public class LandingPage extends AbstractComponent {
 		lastName1.sendKeys(lastName);
 		dreNumber1.sendKeys(dreNumber);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollBy(0,700)");
+		WebElement Element = searchMarket;
+		js.executeScript("arguments[0].scrollIntoView();", Element);
 		Thread.sleep(1000);
 		searchMarket.click();
 		market.click();
@@ -191,12 +257,157 @@ public class LandingPage extends AbstractComponent {
 		email1.sendKeys(email);
 		pw1.sendKeys(password);
 		confirmPw.sendKeys(password);
-		js.executeScript("window.scrollBy(0,700)");
+		WebElement Element1 = checkbox1;
+		js.executeScript("arguments[0].scrollIntoView();", Element1);
 		Thread.sleep(1000);
 
 		checkbox1.click();
 		checkbox2.click();
 		creatAccount.click();
+	}
+
+	public void regisAgentNotfound(String email, String password, String firstName, String lastName, String dreNumber,
+			String numberPhone, String linkURL) throws InterruptedException {
+		String expectedErrorNotFound = "Agent Not Found";
+		searchRole.click();
+		agentRole.click();
+		firstName1.sendKeys(firstName);
+		lastName1.sendKeys(lastName);
+		dreNumber1.sendKeys(dreNumber);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		WebElement Element = searchMarket;
+		js.executeScript("arguments[0].scrollIntoView();", Element);
+		Thread.sleep(1000);
+		searchMarket.click();
+		market.click();
+		phone.sendKeys(numberPhone);
+		url.sendKeys(linkURL);
+		email1.sendKeys(email);
+		pw1.sendKeys(password);
+		confirmPw.sendKeys(password);
+		WebElement Element1 = checkbox1;
+		js.executeScript("arguments[0].scrollIntoView();", Element1);
+		Thread.sleep(1000);
+		checkbox1.click();
+		checkbox2.click();
+		creatAccount.click();
+		waitForElementToApear(errorNotfound1);
+		String actualErrorNotFound = errorNotfound.getText();
+		assertEquals(actualErrorNotFound, expectedErrorNotFound);
+		System.out.println("User not found");
+
+	}
+
+	public void regisAgentRoleFailed(String email, String password, String firstName, String lastName, String dreNumber,
+			String numberPhone, String linkURL) throws InterruptedException {
+		String dreErrorExpected = "DRE number is already associated with an existing account.";
+		String emailErrorExpected = "Email is already associated with an existing account.";
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+
+		searchRole.click();
+		agentRole.click();
+		firstName1.sendKeys(firstName);
+		lastName1.sendKeys(lastName);
+		WebElement Element = dreNumber1;
+		js.executeScript("arguments[0].scrollIntoView();", Element);
+		Thread.sleep(1000);
+
+		dreNumber1.sendKeys(dreNumber);
+		Thread.sleep(1000);
+
+		WebElement clickable = lbl;
+		new Actions(driver).click(clickable).perform();
+		waitForElementToApear(errDreNumber);
+		String dreErrorActual = errDreNumber1.getText();
+		assertEquals(dreErrorActual, dreErrorExpected);
+
+		Thread.sleep(1000);
+		searchMarket.click();
+		market.click();
+		phone.sendKeys(numberPhone);
+		url.sendKeys(linkURL);
+		email1.sendKeys(email);
+		Thread.sleep(1000);
+
+		WebElement clickable1 = lbl;
+		new Actions(driver).click(clickable1).perform();
+		waitForElementToApear(erroEmail1);
+		String emailErrorActual = erroEmail.getText();
+		assertEquals(emailErrorActual, emailErrorExpected);
+		System.out.println("Test DREnumber exist and Email exist success");
+	}
+
+	public void regisManagerRole(String email, String password, String firstName, String lastName, String dreNumber,
+			String numberPhone) throws InterruptedException {
+		searchRole.click();
+		managerRole.click();
+		firstName1.sendKeys(firstName);
+		lastName1.sendKeys(lastName);
+		dreNumber1.sendKeys(dreNumber);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		WebElement Element = searchMarket;
+		js.executeScript("arguments[0].scrollIntoView();", Element);
+		Thread.sleep(1000);
+		searchMarket.click();
+		market.click();
+		phone.sendKeys(numberPhone);
+		waitForElementToApear(checkbox3);
+
+		email1.sendKeys(email);
+		pw1.sendKeys(password);
+		confirmPw.sendKeys(password);
+		WebElement Element1 = checkbox1;
+		js.executeScript("arguments[0].scrollIntoView();", Element1);
+		Thread.sleep(1000);
+
+		checkbox1.click();
+		checkbox2.click();
+		creatAccount.click();
+	}
+
+	public void regisBrokerRole(String company, String firstname, String lastName, String numberPhone, String linkURL,
+			String email, String password) throws InterruptedException {
+
+		companyName.sendKeys(company);
+		adFirstname.sendKeys(firstname);
+		adLastname.sendKeys(lastName);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,700)");
+		Thread.sleep(1000);
+		searchMarket1.click();
+		market.click();
+		phone.sendKeys(numberPhone);
+		url.sendKeys(linkURL);
+
+		WebElement Element1 = emailBroker;
+		js.executeScript("arguments[0].scrollIntoView();", Element1);
+		Thread.sleep(500);
+
+		emailBroker.sendKeys(email);
+		pw1.sendKeys(password);
+		confirmPw.sendKeys(password);
+		checkbox1.click();
+		checkbox2.click();
+		Thread.sleep(2000);
+		WebElement Element = ctnBtn1;
+		js.executeScript("arguments[0].scrollIntoView();", Element);
+		Thread.sleep(1000);
+
+		ctnBtn1.click();
+		Thread.sleep(2000);
+
+		selectSub.click();
+		chooseSub.click();
+		numberAgent.sendKeys("10");
+		csvFile.sendKeys("https://staging-homemeta-api-media.s3.amazonaws.com/media/FileCSV_Admin+(2).csv");
+		Thread.sleep(1000);
+
+		ctnBtn.click();
+		Thread.sleep(1000);
+		waitForElementToApear(paymentInfo1);
+		paymentInfo.sendKeys("long quach");
+		waitForElementToApear(okBtn);
+
 	}
 
 	public void addMailingList() {
@@ -290,16 +501,24 @@ public class LandingPage extends AbstractComponent {
 
 	}
 
-	public void verifyEmail(String email) throws InterruptedException {
-		driver.get("https://yopmail.com/");
-		emailMLNT.sendKeys(email);
-		btnMLNT.click();
-//		waitForElementToApear(emailMLNT2);
-//		emailMLNT1.click();
-		Thread.sleep(1500);
+	public void goToRegisterBroker() {
+		driver.get("https://staging-realestate.homemeta.io/register/?role=BROKER");
 
-		driver.switchTo().frame(2);
-		btnVerify.click();
+	}
+
+	public void verifyEmail(String email1) throws InterruptedException {
+		driver.get("https://inboxes.com/");
+		btnGetIb.click();
+		waitForElementToApear(inputEmail1);
+		inputEmail.sendKeys(email1);
+		btnAddIb.click();
+		waitForElementToApear(getEmail1);
+		getEmail.click();
+		Thread.sleep(1500);
+		waitForElementToApear(verifyEmail1);
+
+//		driver.switchTo().frame(0);
+		verifyEmail.click();
 	}
 
 	public void login(String email, String password) {

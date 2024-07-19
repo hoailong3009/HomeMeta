@@ -5,7 +5,9 @@
     <classes>
       <class name="HomeMeta.PageObjects.RegisterAgent1">
         <methods>
+          <include name="RegisterAgentNotFound" invocation-numbers="0"/>
           <include name="launchApplication"/>
+          <include name="RegisterAgentFailed" invocation-numbers="0"/>
           <include name="RegisterAgent" invocation-numbers="0"/>
         </methods>
       </class> <!-- HomeMeta.PageObjects.RegisterAgent1 -->
