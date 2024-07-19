@@ -12,7 +12,7 @@ import HomeMeta.TestComponents.BaseTest;
 public class CreateCampaign extends BaseTest {
 
 	@Test(dataProvider = "getData")
-	public void CreateCampagin(HashMap<String, String> input) throws InterruptedException {
+	public void CreateCampaign1(HashMap<String, String> input) throws InterruptedException {
 		landingPage.login(input.get("email"), input.get("password"));
 		landingPage.goToCampain();
 

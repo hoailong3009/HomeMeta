@@ -12,7 +12,7 @@ import HomeMeta.TestComponents.BaseTest;
 
 public class CreateDripsCampaigns extends BaseTest {
 	@Test(dataProvider = "getData")
-	public void CreateCampagin(HashMap<String, String> input) throws InterruptedException {
+	public void CreateDripCampaigns(HashMap<String, String> input) throws InterruptedException {
 		String dripCampaignName = "Drips Campaigns Auto";
 		landingPage.login(input.get("email"), input.get("password"));
 

@@ -13,7 +13,7 @@ public class ExtentReporterNG {
 
 		ExtentReports extent = new ExtentReports();
 		extent.attachReporter(reporter);
-		extent.setSystemInfo("Tester", "LongQuach");
+		extent.setSystemInfo("LongQuach", "Tester");
 		return extent;
 	}
 }

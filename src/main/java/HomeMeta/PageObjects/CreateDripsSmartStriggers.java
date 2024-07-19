@@ -12,7 +12,7 @@ import HomeMeta.TestComponents.BaseTest;
 
 public class CreateDripsSmartStriggers extends BaseTest {
 	@Test(dataProvider = "getData")
-	public void CreateCampagin(HashMap<String, String> input) throws InterruptedException {
+	public void CreateDripSmartStriggers(HashMap<String, String> input) throws InterruptedException {
 		String smartStriggerName = "Drip Auto";
 		landingPage.login(input.get("email"), input.get("password"));
 
@@ -20,7 +20,7 @@ public class CreateDripsSmartStriggers extends BaseTest {
 		createDripCampaigns.createDripsSmartStriggers(smartStriggerName);
 
 		Boolean match = createDripCampaigns.VerifySmartTriggersDisplay(smartStriggerName);
-		Assert.assertFalse(match);
+		Assert.assertTrue(match);
 		System.out.println("Add Drips for Smart Triggers Success");
 	}
 

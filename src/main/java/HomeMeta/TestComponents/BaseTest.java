@@ -16,17 +16,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeClass;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import HomeMeta.PageObjects.LandingPage;
+import HomeMeta.PageObjects.LoginPages;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
 	public WebDriver driver;
 	public LandingPage landingPage;
+	public LoginPages loginPage;
 
 	public WebDriver initializeDriver() throws IOException {
 
@@ -72,7 +74,7 @@ public class BaseTest {
 		return System.getProperty("user.dir") + "/reports/" + testcaseName + ".png";
 	}
 
-	@BeforeMethod(alwaysRun = true)
+	@BeforeClass(alwaysRun = true)
 	public LandingPage launchApplication() throws IOException {
 		driver = initializeDriver();
 		landingPage = new LandingPage(driver);

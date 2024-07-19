@@ -1,11 +1,15 @@
 package HomeMeta.PageObjects;
 
+import static org.testng.Assert.assertEquals;
+
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -55,20 +59,26 @@ public class LandingPage extends AbstractComponent {
 	@FindBy(xpath = "//button[normalize-space()='Create Account']")
 	WebElement creatAccount;
 
-	@FindBy(xpath = "(//input[@id='search'])[1]")
+	@FindBy(xpath = "//input[@id='login']")
 	WebElement emailMLNT;
-	@FindBy(xpath = "//button[normalize-space()='GO']")
+	@FindBy(xpath = "//i[@class='material-icons-outlined f36']")
 	WebElement btnMLNT;
 	@FindBy(xpath = "//td[normalize-space()='noreply@homemeta.io']")
 	WebElement emailMLNT1;
-	@FindBy(xpath = "//a[normalize-space()='Verify account']")
+	@FindBy(xpath = "//p[normalize-space()='Verify account']")
 	WebElement btnVerify;
+	By lblVerify = By.xpath("//p[normalize-space()='Verify account']");
+
 	By emailMLNT2 = By.xpath("//td[normalize-space()='noreply@homemeta.io']");
 
 	@FindBy(xpath = "//input[@placeholder='Email']")
 	WebElement emailLogin;
+	By emailLogin1 = By.xpath("//input[@placeholder='Email']");
+
 	@FindBy(xpath = "//input[@placeholder='Password']")
 	WebElement pwLogin;
+	By pwLogin1 = By.xpath("//input[@placeholder='Password']");
+
 	@FindBy(xpath = "//button[normalize-space()='Login']")
 	WebElement btnLogin;
 
@@ -134,6 +144,33 @@ public class LandingPage extends AbstractComponent {
 
 	By campaignMenu = By.xpath("//a[@href='/agent-campaigns/?tab=CAMPAIGNS_FORM']");
 	By title = By.xpath("//span[@class='title-content']");
+	@FindBy(xpath = "//span[@class='title-content']")
+	WebElement title1;
+
+	@FindBy(xpath = "//button[normalize-space()='Add Mailing List']")
+	WebElement btnaddML;
+	@FindBy(xpath = "//button[@class='ant-btn ant-btn-default ant-btn-block e1b9qozy0 css-1q4xa5h']")
+	WebElement uploadCSV;
+	By uploadCSV1 = By.xpath("//button[@class='ant-btn ant-btn-default ant-btn-block e1b9qozy0 css-1q4xa5h']");
+
+	@FindBy(xpath = "//span[normalize-space()='Upload File']")
+	WebElement uploadFile;
+	By uploadFile1 = By.xpath("//span[normalize-space()='Upload File']");
+
+	@FindBy(xpath = "//input[@type='file']")
+	WebElement selectFile;
+	By selectFile1 = By.xpath("//span[normalize-space()='Select File']");
+
+	@FindBy(xpath = "//span[normalize-space()='Map & Save']")
+	WebElement saveFile;
+	@FindBy(xpath = "//input[@placeholder='Name of Mailing List']")
+	WebElement nameML;
+	@FindBy(xpath = "//span[normalize-space()='ADD MAILING LIST']")
+	WebElement addML;
+
+	@FindBy(xpath = "//div[@class='css-d18fnc']")
+	WebElement errMessage;
+	By errMessage1 = By.xpath("//div[@class='css-d18fnc']");
 
 	public void regisAgentRole(String email, String password, String firstName, String lastName, String dreNumber,
 			String numberPhone, String linkURL) throws InterruptedException {
@@ -160,6 +197,25 @@ public class LandingPage extends AbstractComponent {
 		checkbox1.click();
 		checkbox2.click();
 		creatAccount.click();
+	}
+
+	public void addMailingList() {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		waitForElementToApear(title);
+		btnaddML.click();
+		waitForElementToApear(uploadCSV1);
+		uploadCSV.click();
+		waitForElementToApear(uploadFile1);
+		uploadFile.click();
+		waitForElementToApear(selectFile1);
+		selectFile.sendKeys("/Users/hoailong/Downloads/import.csv");
+		WebElement Element = driver.findElement(By.xpath("//span[normalize-space()='Map & Save']"));
+		js.executeScript("arguments[0].scrollIntoView();", Element);
+		saveFile.click();
+		nameML.sendKeys("Mailing List Auto");
+		acceptCookies.click();
+		addML.click();
+
 	}
 
 	public void changePassword(String password) throws InterruptedException {
@@ -235,13 +291,14 @@ public class LandingPage extends AbstractComponent {
 	}
 
 	public void verifyEmail(String email) throws InterruptedException {
-		driver.get("https://www.mailinator.com/");
+		driver.get("https://yopmail.com/");
 		emailMLNT.sendKeys(email);
 		btnMLNT.click();
-		waitForElementToApear(emailMLNT2);
-		emailMLNT1.click();
-		driver.switchTo().frame(0);
-		Thread.sleep(1000);
+//		waitForElementToApear(emailMLNT2);
+//		emailMLNT1.click();
+		Thread.sleep(1500);
+
+		driver.switchTo().frame(2);
 		btnVerify.click();
 	}
 
@@ -249,6 +306,24 @@ public class LandingPage extends AbstractComponent {
 		emailLogin.sendKeys(email);
 		pwLogin.sendKeys(password);
 		btnLogin.click();
+	}
+
+	public void loginFailed(String email, String password) throws InterruptedException {
+		String expected = "Unable to log in with provided credentials.";
+		Actions a = new Actions(driver);
+
+		emailLogin.sendKeys(email);
+		pwLogin.sendKeys(password);
+		btnLogin.click();
+		waitForElementToApear(errMessage1);
+		String actual = errMessage.getText();
+		assertEquals(actual, expected);
+		Thread.sleep(1500);
+
+		waitForElementToApear(emailLogin1);
+		a.moveToElement(emailLogin).doubleClick().click().sendKeys(Keys.BACK_SPACE).perform();
+		a.moveToElement(pwLogin).doubleClick().click().sendKeys(Keys.BACK_SPACE).perform();
+
 	}
 
 	public void waitOkaybutton() throws InterruptedException {
