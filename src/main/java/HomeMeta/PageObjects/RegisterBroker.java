@@ -15,8 +15,15 @@ import org.testng.annotations.Test;
 import HomeMeta.TestComponents.BaseTest;
 
 public class RegisterBroker extends BaseTest {
-
 	@Test(dataProvider = "getData")
+	public void RegisterBrokerFailed(HashMap<String, String> input) throws IOException, InterruptedException {
+		landingPage.goToRegisterBroker();
+		landingPage.regisBrokerFailed(input.get("company"), input.get("firstName"), input.get("lastName"),
+				input.get("numberPhone"), input.get("linkURL"), input.get("email"), input.get("password"));
+
+	}
+
+	@Test(dataProvider = "getData1")
 	public void RegisterBrokerTest(HashMap<String, String> input) throws IOException, InterruptedException {
 		String roleName1 = "Broker";
 		landingPage.goToRegisterBroker();
@@ -31,17 +38,14 @@ public class RegisterBroker extends BaseTest {
 		String childWindowId = it.next();
 		driver.switchTo().window(childWindowId);
 
-		landingPage.verifyEmail(input.get("email1"));
+		landingPage.verifyEmail(input.get("email"));
 
 		driver.switchTo().window(parentWindowId);
-		Thread.sleep(500);
-		driver.findElement(By.xpath("//span[normalize-space()='Okay']")).click();
-
-		landingPage.login(input.get("email"), input.get("password"));
 		Thread.sleep(1000);
-		landingPage.waitOkaybutton();
-
-		Boolean match = landingPage.VerifyRole(roleName1);
+		driver.findElement(By.xpath("//span[normalize-space()='Okay']")).click();
+		Thread.sleep(2500);
+		landingPage.login(input.get("email"), input.get("password"));
+		Boolean match = landingPage.VerifyBrokerRole(roleName1);
 		Assert.assertTrue(match);
 		System.out.println("Register Broker role Passed");
 
@@ -52,6 +56,13 @@ public class RegisterBroker extends BaseTest {
 		List<HashMap<String, String>> data = getJsonData(
 				System.getProperty("user.dir") + "/src/main/java/HomeMeta/data/DataRegisterBroker.json");
 		return new Object[][] { { data.get(0) } };
+	}
+
+	@DataProvider
+	public Object[][] getData1() throws IOException {
+		List<HashMap<String, String>> data = getJsonData(
+				System.getProperty("user.dir") + "/src/main/java/HomeMeta/data/DataRegisterBroker.json");
+		return new Object[][] { { data.get(1) } };
 	}
 
 }

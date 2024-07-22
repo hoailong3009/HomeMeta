@@ -33,6 +33,7 @@ public class LandingPage extends AbstractComponent {
 	WebElement companyName;
 	@FindBy(xpath = "//div[@name='markets']//div[@class='ant-select-selector']")
 	WebElement searchMarket1;
+
 	@FindBy(xpath = "//input[@placeholder='Broker Agent Email']")
 	WebElement brokerEmail;
 
@@ -96,7 +97,7 @@ public class LandingPage extends AbstractComponent {
 	@FindBy(xpath = "//div[@name='sub_id']//span[@class='ant-select-selection-search']")
 	WebElement selectSub;
 	By selectSub1 = By.xpath("//div[@name='sub_id']//span[@class='ant-select-selection-search']");
-	@FindBy(xpath = "//div[contains(text(),'Loan Broker - Daily - $50')]")
+	@FindBy(xpath = "//div[contains(text(),'Loan Broker - Monthly - $10')]")
 	WebElement chooseSub;
 	@FindBy(xpath = "//input[@placeholder='Number of Agents']")
 	WebElement numberAgent;
@@ -115,17 +116,19 @@ public class LandingPage extends AbstractComponent {
 	@FindBy(xpath = "//button[normalize-space()='Add Inbox']")
 	WebElement btnAddIb;
 
-	@FindBy(xpath = "//span[contains(text(),'noreply@homemeta')]")
+	@FindBy(xpath = "//input[@id='login']")
 	WebElement getEmail;
 	By getEmail1 = By.xpath("//span[contains(text(),'noreply@homemeta')]");
-	@FindBy(xpath = "//td[normalize-space()='noreply@homemeta.io']")
-	WebElement emailMLNT1;
+	@FindBy(xpath = "//i[@class='material-icons-outlined f36']")
+	WebElement goEmail;
 
-	@FindBy(xpath = "//a[contains(text(),'Verify account')]")
+	@FindBy(xpath = "//p[contains(text(),'Please activate your account by clicking the link ')]")
 	WebElement verifyEmail;
-	By verifyEmail1 = By.xpath("//a[contains(text(),'Verify account')]");
-
+	@FindBy(xpath = "//a[contains(text(),'Verify account')]")
+	WebElement verifyEmail1;
 	By emailMLNT2 = By.xpath("//td[normalize-space()='noreply@homemeta.io']");
+
+	By waitEmail = By.xpath("//span[contains(text(),'noreply')]");
 
 	@FindBy(xpath = "//input[@placeholder='Email']")
 	WebElement emailLogin;
@@ -196,12 +199,28 @@ public class LandingPage extends AbstractComponent {
 	By btnOk1 = By.xpath("//button[normalize-space()='Okay']");
 	@FindBy(xpath = "//a[@href='/logout']")
 	WebElement logOut;
+
+	@FindBy(xpath = "//p[contains(text(),'Agent')]")
 	private List<WebElement> roleName;
+
+	By roleName2 = By.xpath("//p[contains(text(),'Agent')]");
+
+	@FindBy(xpath = "//h1[normalize-space()='Manager Dashboard']")
+	private List<WebElement> roleManager;
+
+	By roleName3 = By.xpath("//p[contains(text(),'Broker')]");
+	@FindBy(xpath = "//p[contains(text(),'Broker')]")
+	private List<WebElement> roleBroker;
+
+	By roleManager1 = By.xpath("//h1[normalize-space()='Manager Dashboard']");
 
 	By campaignMenu = By.xpath("//a[@href='/agent-campaigns/?tab=CAMPAIGNS_FORM']");
 	By title = By.xpath("//span[@class='title-content']");
 	@FindBy(xpath = "//span[@class='title-content']")
 	WebElement title1;
+	@FindBy(xpath = "//button[@class='ant-btn ant-btn-primary btn-skip css-wr3wd2']")
+	WebElement btnSkip;
+	By btnSkip1 = By.xpath("//button[@class='ant-btn ant-btn-primary btn-skip css-wr3wd2']");
 
 	@FindBy(xpath = "//button[normalize-space()='Add Mailing List']")
 	WebElement btnaddML;
@@ -225,13 +244,36 @@ public class LandingPage extends AbstractComponent {
 	WebElement addML;
 	@FindBy(xpath = "//input[@placeholder='Enter Full Name']")
 	WebElement paymentInfo;
+	@FindBy(xpath = "//input[@placeholder='XXXX-XXXX-XXXX-XXXX']")
+	WebElement numberCard;
+
+	@FindBy(xpath = "//input[@placeholder='MM/YY']")
+	WebElement expired;
+
+	@FindBy(xpath = "//input[@placeholder='CVV']")
+	WebElement cvv;
+	@FindBy(xpath = "//input[@placeholder='Enter Zip Code']")
+	WebElement zipcode;
+
+	@FindBy(xpath = "//span[normalize-space()='Confirm Purchase & Create Account']")
+	WebElement btnConfirm;
+
 	By paymentInfo1 = By.xpath("//input[@placeholder='Enter Full Name']");
 
 	By okBtn = By.xpath("//button[@type='button']");
 
 	@FindBy(xpath = "(//label[@class='s-label'])[5]")
 	WebElement lbl;
-	@FindBy(xpath = "//div[@class='field email-field css-edr8nd']//label[@class='s-label']")
+	@FindBy(xpath = "//div[@class='field email-field css-1mpvq7i']//label[@class='s-label']")
+	WebElement lbl2;
+	@FindBy(xpath = "(//label[@class='s-label'])[9]")
+	WebElement lbl4;
+
+	@FindBy(xpath = "//div[normalize-space()='Email is already associated with an existing account.']")
+	WebElement lbl3;
+	By lbl33 = By.xpath("//div[normalize-space()='Email is already associated with an existing account.']");
+
+	@FindBy(xpath = "//div[@class='field email-fiecld css-edr8nd']//label[@class='s-label']")
 	WebElement lbl1;
 	@FindBy(xpath = "//div[@class='css-d18fnc']")
 	WebElement errMessage;
@@ -294,7 +336,7 @@ public class LandingPage extends AbstractComponent {
 		waitForElementToApear(errorNotfound1);
 		String actualErrorNotFound = errorNotfound.getText();
 		assertEquals(actualErrorNotFound, expectedErrorNotFound);
-		System.out.println("User not found");
+		System.out.println("Test User not found Sucess");
 
 	}
 
@@ -365,6 +407,78 @@ public class LandingPage extends AbstractComponent {
 		creatAccount.click();
 	}
 
+	public void regisManagerFailed(String email, String password, String firstName, String lastName, String dreNumber,
+			String numberPhone) throws InterruptedException {
+		String dreErrorExpected = "DRE number is already associated with an existing account.";
+		String emailErrorExpected = "Email is already associated with an existing account.";
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+
+		searchRole.click();
+		managerRole.click();
+		firstName1.sendKeys(firstName);
+		lastName1.sendKeys(lastName);
+		WebElement Element = dreNumber1;
+		js.executeScript("arguments[0].scrollIntoView();", Element);
+		Thread.sleep(1000);
+		dreNumber1.sendKeys(dreNumber);
+
+		Thread.sleep(1000);
+
+		WebElement clickable = lbl;
+		new Actions(driver).click(clickable).perform();
+		waitForElementToApear(errDreNumber);
+		String dreErrorActual = errDreNumber1.getText();
+		assertEquals(dreErrorActual, dreErrorExpected);
+
+		Thread.sleep(1000);
+		searchMarket.click();
+		market.click();
+		phone.sendKeys(numberPhone);
+		email1.sendKeys(email);
+		Thread.sleep(1000);
+
+		WebElement clickable1 = lbl;
+		new Actions(driver).click(clickable1).perform();
+		waitForElementToApear(erroEmail1);
+		String emailErrorActual = erroEmail.getText();
+		assertEquals(emailErrorActual, emailErrorExpected);
+		System.out.println("Test DREnumber exist and Email exist success");
+	}
+
+	public void regisManagerNotFound(String email, String password, String firstName, String lastName, String dreNumber,
+			String numberPhone) throws InterruptedException {
+		String expectedErrorNotFound = "Agent Not Found";
+
+		searchRole.click();
+		managerRole.click();
+		firstName1.sendKeys(firstName);
+		lastName1.sendKeys(lastName);
+		dreNumber1.sendKeys(dreNumber);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		WebElement Element = searchMarket;
+		js.executeScript("arguments[0].scrollIntoView();", Element);
+		Thread.sleep(1000);
+		searchMarket.click();
+		market.click();
+		phone.sendKeys(numberPhone);
+		waitForElementToApear(checkbox3);
+
+		email1.sendKeys(email);
+		pw1.sendKeys(password);
+		confirmPw.sendKeys(password);
+		WebElement Element1 = checkbox1;
+		js.executeScript("arguments[0].scrollIntoView();", Element1);
+		Thread.sleep(1000);
+
+		checkbox1.click();
+		checkbox2.click();
+		creatAccount.click();
+		waitForElementToApear(errorNotfound1);
+		String actualErrorNotFound = errorNotfound.getText();
+		assertEquals(actualErrorNotFound, expectedErrorNotFound);
+		System.out.println("Test User not found Sucess");
+	}
+
 	public void regisBrokerRole(String company, String firstname, String lastName, String numberPhone, String linkURL,
 			String email, String password) throws InterruptedException {
 
@@ -372,7 +486,8 @@ public class LandingPage extends AbstractComponent {
 		adFirstname.sendKeys(firstname);
 		adLastname.sendKeys(lastName);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollBy(0,700)");
+		WebElement Element = searchMarket1;
+		js.executeScript("arguments[0].scrollIntoView();", Element);
 		Thread.sleep(1000);
 		searchMarket1.click();
 		market.click();
@@ -389,8 +504,8 @@ public class LandingPage extends AbstractComponent {
 		checkbox1.click();
 		checkbox2.click();
 		Thread.sleep(2000);
-		WebElement Element = ctnBtn1;
-		js.executeScript("arguments[0].scrollIntoView();", Element);
+		WebElement Element2 = ctnBtn1;
+		js.executeScript("arguments[0].scrollIntoView();", Element2);
 		Thread.sleep(1000);
 
 		ctnBtn1.click();
@@ -406,7 +521,52 @@ public class LandingPage extends AbstractComponent {
 		Thread.sleep(1000);
 		waitForElementToApear(paymentInfo1);
 		paymentInfo.sendKeys("long quach");
+		driver.switchTo().frame(2);
+		numberCard.sendKeys("4242424242424242");
+		driver.switchTo().defaultContent();
+		Thread.sleep(500);
+		driver.switchTo().frame(3);
+		expired.sendKeys("1234");
+		driver.switchTo().defaultContent();
+		Thread.sleep(500);
+		driver.switchTo().frame(4);
+		cvv.sendKeys("5678");
+		driver.switchTo().defaultContent();
+		zipcode.sendKeys("12412");
+		WebElement Element3 = btnConfirm;
+		js.executeScript("arguments[0].scrollIntoView();", Element3);
+		btnConfirm.click();
 		waitForElementToApear(okBtn);
+	}
+
+	public void regisBrokerFailed(String company, String firstname, String lastName, String numberPhone, String linkURL,
+			String email, String password) throws InterruptedException {
+		String expectedError = "Email is already associated with an existing account.";
+		companyName.sendKeys(company);
+		adFirstname.sendKeys(firstname);
+		adLastname.sendKeys(lastName);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		WebElement Element = searchMarket1;
+		js.executeScript("arguments[0].scrollIntoView();", Element);
+		Thread.sleep(1000);
+		searchMarket1.click();
+		market.click();
+		phone.sendKeys(numberPhone);
+		url.sendKeys(linkURL);
+
+		WebElement Element1 = lbl2;
+		js.executeScript("arguments[0].scrollIntoView();", Element1);
+		Thread.sleep(1000);
+		emailBroker.sendKeys(email);
+		Thread.sleep(1000);
+
+		WebElement clickable = lbl4;
+		new Actions(driver).click(clickable).perform();
+		waitForElementToApear(lbl33);
+
+		String actualError = lbl3.getText();
+		assertEquals(actualError, expectedError);
+		System.out.println("Test User exist Success");
 
 	}
 
@@ -506,19 +666,15 @@ public class LandingPage extends AbstractComponent {
 
 	}
 
-	public void verifyEmail(String email1) throws InterruptedException {
-		driver.get("https://inboxes.com/");
-		btnGetIb.click();
-		waitForElementToApear(inputEmail1);
-		inputEmail.sendKeys(email1);
-		btnAddIb.click();
-		waitForElementToApear(getEmail1);
-		getEmail.click();
+	public void verifyEmail(String email) throws InterruptedException {
+		driver.get("https://yopmail.com/");
+		getEmail.sendKeys(email);
+		goEmail.click();
 		Thread.sleep(1500);
-		waitForElementToApear(verifyEmail1);
+		driver.switchTo().frame(2);
+		waitForElementToApear(waitEmail);
+		verifyEmail1.click();
 
-//		driver.switchTo().frame(0);
-		verifyEmail.click();
 	}
 
 	public void login(String email, String password) {
@@ -545,6 +701,13 @@ public class LandingPage extends AbstractComponent {
 
 	}
 
+	public void waitSkipbutton() throws InterruptedException {
+		waitForElementToApear(btnSkip1);
+		btnSkip.click();
+		Thread.sleep(1500);
+		btnSkip.click();
+	}
+
 	public void waitOkaybutton() throws InterruptedException {
 		waitForElementToApear(btnOkay1);
 		btnOkay.click();
@@ -554,8 +717,21 @@ public class LandingPage extends AbstractComponent {
 	}
 
 	public Boolean VerifyRole(String roleName1) {
-
+		waitForElementToApear(roleName2);
 		Boolean match = roleName.stream().anyMatch(role -> role.getText().equalsIgnoreCase(roleName1));
+		return match;
+
+	}
+
+	public Boolean VerifyManagerRole(String roleName1) {
+		waitForElementToApear(roleManager1);
+		Boolean match = roleManager.stream().anyMatch(role -> role.getText().equalsIgnoreCase(roleName1));
+		return match;
+	}
+
+	public Boolean VerifyBrokerRole(String roleName1) {
+		waitForElementToApear(roleName3);
+		Boolean match = roleBroker.stream().anyMatch(role -> role.getText().equalsIgnoreCase(roleName1));
 		return match;
 
 	}

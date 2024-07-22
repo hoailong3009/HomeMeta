@@ -4,13 +4,13 @@
 	<listeners>
 		<listener class-name="HomeMeta.TestComponents.Listeners"/>
 	</listeners>
-  <test thread-count="5" name="Register Failed">
+  <test thread-count="5" name="Register Manager Failed">
 
     <classes>
        
-      <class name="HomeMeta.PageObjects.RegisterAgent1">
+      <class name="HomeMeta.PageObjects.RegisterManager">
 		  <methods>
-			          <include name="RegisterAgentFailed" />
+			          <include name="RegisterManagerFailed" />
 
 		  </methods>
       </class>
@@ -18,13 +18,13 @@
 
     </classes>
   </test> <!-- Test -->
-  <test thread-count="5" name="Register not Found">
+  <test thread-count="5" name="Register Manager not Found">
 
     <classes>
        
-      <class name="HomeMeta.PageObjects.RegisterAgent1">
+      <class name="HomeMeta.PageObjects.RegisterManager">
 		  <methods>
-			          <include name="RegisterAgentNotFound" />
+			          <include name="RegisterManagerNotFound" />
 
 		  </methods>
       </class>
@@ -32,13 +32,13 @@
 
     </classes>
   </test> <!-- Test -->
-  <test thread-count="5" name="Register Success">
+  <test thread-count="5" name="Register Manager Success">
 
     <classes>
        
-      <class name="HomeMeta.PageObjects.RegisterAgent1">
+      <class name="HomeMeta.PageObjects.RegisterManager">
 		  <methods>
-			          <include name="RegisterAgent" />
+			          <include name="RegisterManagerTest" />
 
 		  </methods>
       </class>

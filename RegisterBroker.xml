@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Register" >
+	<listeners>
+		<listener class-name="HomeMeta.TestComponents.Listeners"/>
+	</listeners>
+  <test thread-count="5" name="Register Broker Failed">
+
+    <classes>
+       
+      <class name="HomeMeta.PageObjects.RegisterBroker">
+		  <methods>
+			          <include name="RegisterBrokerFailed" />
+
+		  </methods>
+      </class>
+ 
+
+    </classes>
+  </test> <!-- Test -->
+  <test thread-count="5" name="Register Broker Success">
+
+    <classes>
+       
+      <class name="HomeMeta.PageObjects.RegisterBroker">
+		  <methods>
+			          <include name="RegisterBrokerTest" />
+
+		  </methods>
+      </class>
+
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

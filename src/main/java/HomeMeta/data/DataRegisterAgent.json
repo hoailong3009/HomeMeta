@@ -9,7 +9,6 @@
 	 "linkURL": "https://staging-realestate.homemeta.io/"
  },
  {
-	 "email1": "agent",
 	 "email" : "kon@blondmail.com",
 	 "password": "Test1234@",
 	 "firstName" : "ABC",
@@ -19,12 +18,11 @@
 	 "linkURL": "https://staging-realestate.homemeta.io/"
  },
  {
-	 "email1": "agent",
-	 "email" : "agent@blondmail.com",
+	 "email" : "agentzza@yopmail.com",
 	 "password": "Test1234@",
-	 "firstName" : "Jigisha",
-	 "lastName" : "Patel",
-	 "dreNumber": "02099452",
+	 "firstName" : "Patrick",
+	 "lastName" : "Dwyer",
+	 "dreNumber": "01335285",
 	 "numberPhone": "0189538500",
 	 "linkURL": "https://staging-realestate.homemeta.io/"
  }

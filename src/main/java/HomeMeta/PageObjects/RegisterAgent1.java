@@ -47,7 +47,7 @@ public class RegisterAgent1 extends BaseTest {
 		String childWindowId = it.next();
 		driver.switchTo().window(childWindowId);
 
-		landingPage.verifyEmail(input.get("email1"));
+		landingPage.verifyEmail(input.get("email"));
 
 		driver.switchTo().window(parentWindowId);
 		Thread.sleep(500);

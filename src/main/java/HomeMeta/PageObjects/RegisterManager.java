@@ -15,10 +15,25 @@ import org.testng.annotations.Test;
 import HomeMeta.TestComponents.BaseTest;
 
 public class RegisterManager extends BaseTest {
-
 	@Test(dataProvider = "getData")
+	public void RegisterManagerFailed(HashMap<String, String> input) throws IOException, InterruptedException {
+		landingPage.goToRegister();
+		landingPage.regisManagerFailed(input.get("email"), input.get("password"), input.get("firstName"),
+				input.get("lastName"), input.get("dreNumber"), input.get("numberPhone"));
+
+	}
+
+	@Test(dataProvider = "getData1")
+	public void RegisterManagerNotFound(HashMap<String, String> input) throws IOException, InterruptedException {
+		landingPage.goToRegister();
+		landingPage.regisManagerNotFound(input.get("email"), input.get("password"), input.get("firstName"),
+				input.get("lastName"), input.get("dreNumber"), input.get("numberPhone"));
+
+	}
+
+	@Test(dataProvider = "getData2")
 	public void RegisterManagerTest(HashMap<String, String> input) throws IOException, InterruptedException {
-		String roleName1 = "Manager";
+		String roleName1 = "Manager Dashboard";
 		landingPage.goToRegister();
 		landingPage.regisManagerRole(input.get("email"), input.get("password"), input.get("firstName"),
 				input.get("lastName"), input.get("dreNumber"), input.get("numberPhone"));
@@ -31,7 +46,7 @@ public class RegisterManager extends BaseTest {
 		String childWindowId = it.next();
 		driver.switchTo().window(childWindowId);
 
-		landingPage.verifyEmail(input.get("email1"));
+		landingPage.verifyEmail(input.get("email"));
 
 		driver.switchTo().window(parentWindowId);
 		Thread.sleep(500);
@@ -39,9 +54,10 @@ public class RegisterManager extends BaseTest {
 
 		landingPage.login(input.get("email"), input.get("password"));
 		Thread.sleep(1000);
-		landingPage.waitOkaybutton();
 
-		Boolean match = landingPage.VerifyRole(roleName1);
+		landingPage.waitSkipbutton();
+
+		Boolean match = landingPage.VerifyManagerRole(roleName1);
 		Assert.assertTrue(match);
 		System.out.println("Register Manager role Passed");
 
@@ -52,6 +68,20 @@ public class RegisterManager extends BaseTest {
 		List<HashMap<String, String>> data = getJsonData(
 				System.getProperty("user.dir") + "/src/main/java/HomeMeta/data/DataRegisterManager.json");
 		return new Object[][] { { data.get(0) } };
+	}
+
+	@DataProvider
+	public Object[][] getData1() throws IOException {
+		List<HashMap<String, String>> data = getJsonData(
+				System.getProperty("user.dir") + "/src/main/java/HomeMeta/data/DataRegisterManager.json");
+		return new Object[][] { { data.get(1) } };
+	}
+
+	@DataProvider
+	public Object[][] getData2() throws IOException {
+		List<HashMap<String, String>> data = getJsonData(
+				System.getProperty("user.dir") + "/src/main/java/HomeMeta/data/DataRegisterManager.json");
+		return new Object[][] { { data.get(2) } };
 	}
 
 }

@@ -4,14 +4,14 @@
   <listeners>
     <listener class-name="HomeMeta.TestComponents.Listeners"/>
   </listeners>
-  <test thread-count="5" name="Register(failed)">
+  <test thread-count="5" name="Register Sucess(failed)">
     <classes>
-      <class name="HomeMeta.PageObjects.RegisterAgent1">
+      <class name="HomeMeta.PageObjects.RegisterManager">
         <methods>
           <include name="launchApplication"/>
-          <include name="RegisterAgent" invocation-numbers="0"/>
+          <include name="RegisterManagerTest" invocation-numbers="0"/>
         </methods>
-      </class> <!-- HomeMeta.PageObjects.RegisterAgent1 -->
+      </class> <!-- HomeMeta.PageObjects.RegisterManager -->
     </classes>
-  </test> <!-- Register(failed) -->
+  </test> <!-- Register Sucess(failed) -->
 </suite> <!-- Failed suite [Register] -->

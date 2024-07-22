@@ -1,12 +1,20 @@
 [
- {
+{
 	 "company": "HDW",
 	 "firstName" : "Jigisha",
 	 "lastName" : "Patel",
 	 "numberPhone": "0932134431",
 	 "linkURL": "https://staging-realestate.homemeta.io/",
-	 "email": "longkzqz1@blondmail.com",
-	 "email1": "longkzq1",
+	 "email": "nicole9090@yopmail.com",
+	 "password": "Test1234@"
+},
+ {
+	 "company": "HDW",
+	 "firstName" : "LonG",
+	 "lastName" : "Patel",
+	 "numberPhone": "0932134431",
+	 "linkURL": "https://staging-realestate.homemeta.io/",
+	 "email": "longkzq1@yopmail.com",
 	 "password": "Test1234@"
  }
 ]
