@@ -773,7 +773,6 @@ public class LandingPage extends AbstractComponent {
 	public void loginFailed(String email, String password) throws InterruptedException {
 		String expected = "Unable to log in with provided credentials.";
 		Actions a = new Actions(driver);
-
 		emailLogin.sendKeys(email);
 		pwLogin.sendKeys(password);
 		btnLogin.click();
@@ -781,7 +780,6 @@ public class LandingPage extends AbstractComponent {
 		String actual = errMessage.getText();
 		assertEquals(actual, expected);
 		Thread.sleep(1500);
-
 		waitForElementToApear(emailLogin1);
 		a.moveToElement(emailLogin).doubleClick().click().sendKeys(Keys.BACK_SPACE).perform();
 		a.moveToElement(pwLogin).doubleClick().click().sendKeys(Keys.BACK_SPACE).perform();
