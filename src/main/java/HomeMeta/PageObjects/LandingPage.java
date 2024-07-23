@@ -39,6 +39,8 @@ public class LandingPage extends AbstractComponent {
 
 	@FindBy(xpath = "//button[@aria-label='Accept cookies']")
 	WebElement acceptCookies;
+	By acceptCookies1 = By.xpath("//button[@aria-label='Accept cookies']");
+
 	@FindBy(xpath = "//div[@name='user_type']//span[@class='ant-select-selection-search']")
 	WebElement searchRole;
 	@FindBy(xpath = "//div[@class='ant-select-item-option-content'][normalize-space()='AGENT']")
@@ -212,6 +214,10 @@ public class LandingPage extends AbstractComponent {
 	@FindBy(xpath = "//p[contains(text(),'Broker')]")
 	private List<WebElement> roleBroker;
 
+	@FindBy(xpath = "//td[normalize-space()]")
+	private List<WebElement> nameMailingList;
+	By listMailingList = By.xpath("//h3[normalize-space()='My Mailing Lists']");
+
 	By roleManager1 = By.xpath("//h1[normalize-space()='Manager Dashboard']");
 
 	By campaignMenu = By.xpath("//a[@href='/agent-campaigns/?tab=CAMPAIGNS_FORM']");
@@ -227,17 +233,42 @@ public class LandingPage extends AbstractComponent {
 	@FindBy(xpath = "//button[@class='ant-btn ant-btn-default ant-btn-block e1b9qozy0 css-1q4xa5h']")
 	WebElement uploadCSV;
 	By uploadCSV1 = By.xpath("//button[@class='ant-btn ant-btn-default ant-btn-block e1b9qozy0 css-1q4xa5h']");
+	@FindBy(xpath = "//span[normalize-space()='Draw area on map']")
+	WebElement draw;
 
 	@FindBy(xpath = "//span[normalize-space()='Upload File']")
 	WebElement uploadFile;
 	By uploadFile1 = By.xpath("//span[normalize-space()='Upload File']");
+	By lbladdMl = By.xpath("//h1[normalize-space()='Add Mailing List']");
+	@FindBy(xpath = "//div[@class='gm-style']//div[3]//div[2]")
+	WebElement map;
+	@FindBy(xpath = "//input[@placeholder='Name of Mailing List']")
+	WebElement nameMl;
+	@FindBy(xpath = "//span[normalize-space()='Next']")
+	WebElement btnNext;
+	By btnNext1 = By.xpath("//span[normalize-space()='Next']");
+
+	@FindBy(xpath = "//input[@id='pac-input']")
+	WebElement search;
+	@FindBy(xpath = "//span[@aria-label='search']//*[name()='svg']")
+	WebElement btnsearch;
+	By btnsearch1 = By.xpath("//span[@aria-label='search']//*[name()='svg']");
 
 	@FindBy(xpath = "//input[@type='file']")
 	WebElement selectFile;
 	By selectFile1 = By.xpath("//span[normalize-space()='Select File']");
 
+	@FindBy(xpath = "//span[normalize-space()='Confirm']")
+	WebElement btnConfirmML;
+	By textTurnover = By.xpath("//li[2]//span[1]");
+
+	By errorML1 = By.xpath("//span[normalize-space()='Mailing List is not found']");
+	@FindBy(xpath = "//span[normalize-space()='Mailing List is not found']")
+	WebElement errorML;
+
 	@FindBy(xpath = "//span[normalize-space()='Map & Save']")
 	WebElement saveFile;
+
 	@FindBy(xpath = "//input[@placeholder='Name of Mailing List']")
 	WebElement nameML;
 	@FindBy(xpath = "//span[normalize-space()='ADD MAILING LIST']")
@@ -570,7 +601,7 @@ public class LandingPage extends AbstractComponent {
 
 	}
 
-	public void addMailingList() {
+	public void addMailingListImportFile() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		waitForElementToApear(title);
 		btnaddML.click();
@@ -580,12 +611,80 @@ public class LandingPage extends AbstractComponent {
 		uploadFile.click();
 		waitForElementToApear(selectFile1);
 		selectFile.sendKeys("/Users/hoailong/Downloads/import.csv");
-		WebElement Element = driver.findElement(By.xpath("//span[normalize-space()='Map & Save']"));
+		WebElement Element = saveFile;
 		js.executeScript("arguments[0].scrollIntoView();", Element);
 		saveFile.click();
 		nameML.sendKeys("Mailing List Auto");
 		acceptCookies.click();
 		addML.click();
+	}
+
+	public void addMailingListDraw(String nameMailingList1) throws InterruptedException {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		waitForElementToApear(title);
+		btnaddML.click();
+		waitForElementToApear(uploadCSV1);
+		draw.click();
+		waitForElementToApear(acceptCookies1);
+		acceptCookies.click();
+		waitForElementToApear(btnsearch1);
+		search.sendKeys("Magnolia Street Irvine");
+		btnsearch.click();
+		Thread.sleep(2000);
+		Actions vertex1 = new Actions(driver);
+		vertex1.moveToElement(map).moveByOffset(-20, 200).click().build().perform();
+		Actions vertex2 = new Actions(driver);
+		vertex2.moveToElement(map).moveByOffset(300, 200).click().build().perform();
+		Actions vertex3 = new Actions(driver);
+		vertex3.moveToElement(map).moveByOffset(300, -170).click().build().perform();
+		Actions vertex4 = new Actions(driver);
+		vertex4.moveToElement(map).moveByOffset(-20, -170).click().build().perform();
+		Actions vertex5 = new Actions(driver);
+		vertex5.moveToElement(map).moveByOffset(-90, 80).click().build().perform();
+		Actions vertex6 = new Actions(driver);
+		vertex6.moveToElement(map).moveByOffset(-20, 200).doubleClick().build().perform();
+		nameMl.sendKeys(nameMailingList1);
+		waitForElementToApear(btnNext1);
+		btnNext.click();
+		waitForTextChanged(textTurnover);
+		WebElement Element = btnConfirmML;
+		js.executeScript("arguments[0].scrollIntoView();", Element);
+		Thread.sleep(1000);
+
+		btnConfirmML.click();
+	}
+
+	public void addMailingListDrawFailed() throws InterruptedException {
+		String expectedText = "Mailing List is not found";
+		waitForElementToApear(title);
+		btnaddML.click();
+		waitForElementToApear(uploadCSV1);
+		draw.click();
+		waitForElementToApear(acceptCookies1);
+		acceptCookies.click();
+		waitForElementToApear(btnsearch1);
+		search.sendKeys("Sand Bar, Canyon Lake, TX, USA");
+		btnsearch.click();
+		Thread.sleep(2000);
+		Actions vertex1 = new Actions(driver);
+		vertex1.moveToElement(map).moveByOffset(-10, 100).click().build().perform();
+		Actions vertex2 = new Actions(driver);
+		vertex2.moveToElement(map).moveByOffset(150, 100).click().build().perform();
+		Actions vertex3 = new Actions(driver);
+		vertex3.moveToElement(map).moveByOffset(150, -85).click().build().perform();
+		Actions vertex4 = new Actions(driver);
+		vertex4.moveToElement(map).moveByOffset(-10, -85).click().build().perform();
+		Actions vertex5 = new Actions(driver);
+		vertex5.moveToElement(map).moveByOffset(-45, 40).click().build().perform();
+		Actions vertex6 = new Actions(driver);
+		vertex6.moveToElement(map).moveByOffset(-10, 100).doubleClick().build().perform();
+		nameMl.sendKeys("Mailing List Failed");
+		waitForElementToApear(btnNext1);
+		btnNext.click();
+		waitForElementToApear(errorML1);
+		String actualText = errorML.getText();
+		assertEquals(actualText, expectedText);
+		System.out.println("Test Draw Mailing List Not found Success");
 
 	}
 
@@ -593,7 +692,6 @@ public class LandingPage extends AbstractComponent {
 		String rePw = "Long12345@";
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		waitForElementToApear(title);
-
 		driver.get("https://staging-realestate.homemeta.io/settings");
 		WebElement Element = driver.findElement(By.xpath("//input[@placeholder='Current Password']"));
 		js.executeScript("arguments[0].scrollIntoView();", Element);
@@ -611,39 +709,28 @@ public class LandingPage extends AbstractComponent {
 
 	public void goToCampain() throws InterruptedException {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-
 		goCampaign.click();
-
 		waitForElementToApear(btnCreate);
-
 		WebElement Element = driver
 				.findElement(By.xpath("//div[@class='field target-field css-21vogu']//label[@class='s-label']"));
 		js.executeScript("arguments[0].scrollIntoView();", Element);
 		waitForElementToApear(selectField);
 		clickSelect.click();
 		chooseML.click();
-
 		Thread.sleep(1500);
-
 		clickSelect.click();
 		Thread.sleep(1000);
-
 		clickTA.click();
-
 		chooseTA.click();
 		Thread.sleep(3000);
 		chooseTemplate.click();
 		Thread.sleep(1000);
-
 		WebElement Element1 = driver.findElement(By.xpath("//button[normalize-space()='Submit Order']"));
 		js.executeScript("arguments[0].scrollIntoView();", Element1);
-
 		waitForElementToApear(btnSubmit1);
 		btnSubmit.click();
-
 		waitForElementToApear(btnCampaign1);
 		btnCampaign.click();
-
 		waitForElementToApear(btnViewOrder1);
 		btnViewOrder.click();
 		WebElement Element2 = driver.findElement(By.xpath("//h2[normalize-space()='Past Orders']"));
@@ -734,6 +821,13 @@ public class LandingPage extends AbstractComponent {
 		Boolean match = roleBroker.stream().anyMatch(role -> role.getText().equalsIgnoreCase(roleName1));
 		return match;
 
+	}
+
+	public Boolean VerifyNameMailingList(String nameMailingList1) {
+		waitForElementToApear(listMailingList);
+		Boolean match = nameMailingList.stream()
+				.anyMatch(nameML -> nameML.getText().equalsIgnoreCase(nameMailingList1));
+		return match;
 	}
 
 }

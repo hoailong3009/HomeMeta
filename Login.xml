@@ -9,7 +9,6 @@
     <classes>
        
       <class name="HomeMeta.PageObjects.AgentLogin"/>
-
     </classes>
   </test> <!-- Test -->
   <test thread-count="5" name="Manager Login">

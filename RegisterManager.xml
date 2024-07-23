@@ -4,45 +4,37 @@
 	<listeners>
 		<listener class-name="HomeMeta.TestComponents.Listeners"/>
 	</listeners>
-  <test thread-count="5" name="Register Manager Failed">
-
-    <classes>
-       
-      <class name="HomeMeta.PageObjects.RegisterManager">
-		  <methods>
-			          <include name="RegisterManagerFailed" />
-
-		  </methods>
-      </class>
- 
-
-    </classes>
-  </test> <!-- Test -->
-  <test thread-count="5" name="Register Manager not Found">
-
-    <classes>
-       
-      <class name="HomeMeta.PageObjects.RegisterManager">
-		  <methods>
-			          <include name="RegisterManagerNotFound" />
-
-		  </methods>
-      </class>
- 
-
-    </classes>
-  </test> <!-- Test -->
-  <test thread-count="5" name="Register Manager Success">
-
-    <classes>
-       
+	
+	
+	  <test thread-count="5" name="Register Manager Success">
+    <classes>       
       <class name="HomeMeta.PageObjects.RegisterManager">
 		  <methods>
 			          <include name="RegisterManagerTest" />
-
 		  </methods>
       </class>
-
     </classes>
   </test> <!-- Test -->
+  
+  <test thread-count="5" name="Register Manager Failed">
+    <classes>
+      <class name="HomeMeta.PageObjects.RegisterManager">
+		  <methods>
+			          <include name="RegisterManagerFailed" />
+		  </methods>
+      </class> 
+    </classes>
+  </test> <!-- Test -->
+  
+  
+  <test thread-count="5" name="Register Manager not Found">
+    <classes>    
+      <class name="HomeMeta.PageObjects.RegisterManager">
+		  <methods>
+			          <include name="RegisterManagerNotFound" />
+		  </methods>
+      </class> 
+    </classes>
+  </test> <!-- Test -->
+
 </suite> <!-- Suite -->

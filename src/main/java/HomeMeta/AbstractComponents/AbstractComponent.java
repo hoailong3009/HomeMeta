@@ -18,4 +18,9 @@ public class AbstractComponent {
 		WebDriverWait w = new WebDriverWait(driver, Duration.ofSeconds(30));
 		w.until(ExpectedConditions.visibilityOfElementLocated(findBy));
 	}
+
+	public void waitForTextChanged(By findBy) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.textToBePresentInElementLocated(findBy, "%"));
+	}
 }

@@ -4,45 +4,38 @@
 	<listeners>
 		<listener class-name="HomeMeta.TestComponents.Listeners"/>
 	</listeners>
-  <test thread-count="5" name="Register Failed">
-
-    <classes>
-       
-      <class name="HomeMeta.PageObjects.RegisterAgent1">
-		  <methods>
-			          <include name="RegisterAgentFailed" />
-
-		  </methods>
-      </class>
- 
-
-    </classes>
-  </test> <!-- Test -->
-  <test thread-count="5" name="Register not Found">
-
-    <classes>
-       
-      <class name="HomeMeta.PageObjects.RegisterAgent1">
-		  <methods>
-			          <include name="RegisterAgentNotFound" />
-
-		  </methods>
-      </class>
- 
-
-    </classes>
-  </test> <!-- Test -->
+	
   <test thread-count="5" name="Register Success">
-
     <classes>
-       
       <class name="HomeMeta.PageObjects.RegisterAgent1">
 		  <methods>
 			          <include name="RegisterAgent" />
-
 		  </methods>
       </class>
-
     </classes>
   </test> <!-- Test -->
+  
+  
+    <test thread-count="5" name="Register Failed">
+    <classes>
+      <class name="HomeMeta.PageObjects.RegisterAgent1">
+		  <methods>
+			          <include name="RegisterAgentFailed" />
+		  </methods>
+      </class>
+    </classes>
+  </test> <!-- Test -->
+  
+  
+  <test thread-count="5" name="Register not Found">
+    <classes>
+      <class name="HomeMeta.PageObjects.RegisterAgent1">
+		  <methods>
+			          <include name="RegisterAgentNotFound" />
+		  </methods>
+      </class>
+    </classes>
+  </test> <!-- Test -->
+  
+  
 </suite> <!-- Suite -->

@@ -12,9 +12,19 @@ import HomeMeta.TestComponents.BaseTest;
 public class AddMailingList extends BaseTest {
 
 	@Test(dataProvider = "getData")
-	public void AddMailingList1(HashMap<String, String> input) throws InterruptedException {
+	public void AddMailingListTest(HashMap<String, String> input) throws InterruptedException {
+		String nameMailingList1 = "Auto Draw Mailing List 1";
 		landingPage.login(input.get("email"), input.get("password"));
-		landingPage.addMailingList();
+		landingPage.addMailingListDraw(nameMailingList1);
+		landingPage.VerifyNameMailingList(nameMailingList1);
+		System.out.println("Draw Mailing List success");
+
+	}
+
+	@Test(dataProvider = "getData")
+	public void AddMailingListFailed(HashMap<String, String> input) throws InterruptedException {
+		landingPage.login(input.get("email"), input.get("password"));
+		landingPage.addMailingListDrawFailed();
 
 	}
 
