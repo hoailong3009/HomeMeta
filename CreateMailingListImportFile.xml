@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Add Mailing List Import File" >
+	<listeners>
+		<listener class-name="HomeMeta.TestComponents.Listeners"/>
+	</listeners>
+	
+	  <test thread-count="5" name="Add Mailing List Import File Duplicated">
+    <classes>   
+      <class name="HomeMeta.PageObjects.AddMailingListImportFile">
+		  <methods>
+			          <include name="AddMailingListDuplicatedTest" />
+		  </methods>
+      </class>
+    </classes>
+  </test> <!-- Test -->
+  
+  
+  <test thread-count="5" name="Add Mailing List Import File Incorrect Format">
+    <classes>    
+      <class name="HomeMeta.PageObjects.AddMailingListImportFile">
+		  <methods>
+			          <include name="AddMailingListIncorrectFormat" />
+		  </methods>
+      </class>
+    </classes>
+  </test> <!-- Test -->
+  
+  
+</suite> <!-- Suite -->

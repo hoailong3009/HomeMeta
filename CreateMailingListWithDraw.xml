@@ -7,7 +7,7 @@
 	
 	  <test thread-count="5" name="Add Mailing List with Draw Success">
     <classes>   
-      <class name="HomeMeta.PageObjects.AddMailingList">
+      <class name="HomeMeta.PageObjects.AddMailingListDraw">
 		  <methods>
 			          <include name="AddMailingListTest" />
 		  </methods>
@@ -18,7 +18,7 @@
   
   <test thread-count="5" name="Add Mailing List with Draw Failed">
     <classes>    
-      <class name="HomeMeta.PageObjects.AddMailingList">
+      <class name="HomeMeta.PageObjects.AddMailingListDraw">
 		  <methods>
 			          <include name="AddMailingListFailed" />
 		  </methods>

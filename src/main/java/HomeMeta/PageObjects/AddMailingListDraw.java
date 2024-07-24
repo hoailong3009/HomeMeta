@@ -9,9 +9,9 @@ import org.testng.annotations.Test;
 
 import HomeMeta.TestComponents.BaseTest;
 
-public class AddMailingList extends BaseTest {
+public class AddMailingListDraw extends BaseTest {
 
-	@Test(dataProvider = "getData")
+	@Test(dataProvider = "getData", retryAnalyzer = TestComponent.Retry.class)
 	public void AddMailingListTest(HashMap<String, String> input) throws InterruptedException {
 		String nameMailingList1 = "Auto Draw Mailing List 1";
 		landingPage.login(input.get("email"), input.get("password"));

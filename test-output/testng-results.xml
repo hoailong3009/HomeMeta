@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-07-23T15:47:51 ICT" name="Add Mailing List with Draw" finished-at="2024-07-23T15:49:27 ICT" duration-ms="95320">
+  <suite started-at="2024-07-24T11:20:12 ICT" name="Add Mailing List with Draw" finished-at="2024-07-24T11:21:32 ICT" duration-ms="80826">
     <groups>
     </groups>
-    <test started-at="2024-07-23T15:47:51 ICT" name="Add Mailing List with Draw Success" finished-at="2024-07-23T15:48:50 ICT" duration-ms="58683">
-      <class name="HomeMeta.PageObjects.AddMailingList">
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:HomeMeta.PageObjects.AddMailingList@65a15628]" started-at="2024-07-23T15:47:51 ICT" name="launchApplication" finished-at="2024-07-23T15:47:57 ICT" duration-ms="6004" status="PASS">
+    <test started-at="2024-07-24T11:20:12 ICT" name="Add Mailing List Import File Duplicated" finished-at="2024-07-24T11:21:05 ICT" duration-ms="53180">
+      <class name="HomeMeta.PageObjects.AddMailingListImportFile">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:HomeMeta.PageObjects.AddMailingListImportFile@2766ca9d]" started-at="2024-07-24T11:20:12 ICT" name="launchApplication" finished-at="2024-07-24T11:20:15 ICT" duration-ms="3471" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="AddMailingListTest(java.util.HashMap)[pri:0, instance:HomeMeta.PageObjects.AddMailingList@65a15628]" started-at="2024-07-23T15:47:58 ICT" name="AddMailingListTest" data-provider="getData" finished-at="2024-07-23T15:48:50 ICT" duration-ms="52349" status="PASS">
+        <test-method signature="AddMailingListDuplicatedTest(java.util.HashMap)[pri:0, instance:HomeMeta.PageObjects.AddMailingListImportFile@2766ca9d]" started-at="2024-07-24T11:20:15 ICT" name="AddMailingListDuplicatedTest" data-provider="getData" finished-at="2024-07-24T11:21:05 ICT" duration-ms="49475" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -21,16 +21,16 @@
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- AddMailingListTest -->
-      </class> <!-- HomeMeta.PageObjects.AddMailingList -->
-    </test> <!-- Add Mailing List with Draw Success -->
-    <test started-at="2024-07-23T15:48:51 ICT" name="Add Mailing List with Draw Failed" finished-at="2024-07-23T15:49:27 ICT" duration-ms="36121">
-      <class name="HomeMeta.PageObjects.AddMailingList">
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:HomeMeta.PageObjects.AddMailingList@7803bfd]" started-at="2024-07-23T15:48:51 ICT" name="launchApplication" finished-at="2024-07-23T15:48:56 ICT" duration-ms="5549" status="PASS">
+        </test-method> <!-- AddMailingListDuplicatedTest -->
+      </class> <!-- HomeMeta.PageObjects.AddMailingListImportFile -->
+    </test> <!-- Add Mailing List Import File Duplicated -->
+    <test started-at="2024-07-24T11:21:05 ICT" name="Add Mailing List Import File Incorrect Format" finished-at="2024-07-24T11:21:32 ICT" duration-ms="27264">
+      <class name="HomeMeta.PageObjects.AddMailingListImportFile">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:HomeMeta.PageObjects.AddMailingListImportFile@388526fb]" started-at="2024-07-24T11:21:05 ICT" name="launchApplication" finished-at="2024-07-24T11:21:11 ICT" duration-ms="5737" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="AddMailingListFailed(java.util.HashMap)[pri:0, instance:HomeMeta.PageObjects.AddMailingList@7803bfd]" started-at="2024-07-23T15:48:56 ICT" name="AddMailingListFailed" data-provider="getData" finished-at="2024-07-23T15:49:27 ICT" duration-ms="30561" status="PASS">
+        <test-method signature="AddMailingListIncorrectFormat(java.util.HashMap)[pri:0, instance:HomeMeta.PageObjects.AddMailingListImportFile@388526fb]" started-at="2024-07-24T11:21:11 ICT" name="AddMailingListIncorrectFormat" data-provider="getData" finished-at="2024-07-24T11:21:32 ICT" duration-ms="21519" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -40,8 +40,8 @@
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- AddMailingListFailed -->
-      </class> <!-- HomeMeta.PageObjects.AddMailingList -->
-    </test> <!-- Add Mailing List with Draw Failed -->
+        </test-method> <!-- AddMailingListIncorrectFormat -->
+      </class> <!-- HomeMeta.PageObjects.AddMailingListImportFile -->
+    </test> <!-- Add Mailing List Import File Incorrect Format -->
   </suite> <!-- Add Mailing List with Draw -->
 </testng-results>

@@ -266,6 +266,8 @@ public class LandingPage extends AbstractComponent {
 	@FindBy(xpath = "//span[normalize-space()='Mailing List is not found']")
 	WebElement errorML;
 
+	By errorAddML = By.xpath("//h2[@id='swal2-title']");
+
 	@FindBy(xpath = "//span[normalize-space()='Map & Save']")
 	WebElement saveFile;
 
@@ -601,7 +603,7 @@ public class LandingPage extends AbstractComponent {
 
 	}
 
-	public void addMailingListImportFile() {
+	public void addMailingListImportFile(String nameMailingList1) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		waitForElementToApear(title);
 		btnaddML.click();
@@ -614,9 +616,43 @@ public class LandingPage extends AbstractComponent {
 		WebElement Element = saveFile;
 		js.executeScript("arguments[0].scrollIntoView();", Element);
 		saveFile.click();
-		nameML.sendKeys("Mailing List Auto");
+		nameML.sendKeys(nameMailingList1);
 		acceptCookies.click();
 		addML.click();
+	}
+
+	public void addMailingListImportFileDuplicate(String nameMailingList1) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		waitForElementToApear(title);
+		btnaddML.click();
+		waitForElementToApear(uploadCSV1);
+		uploadCSV.click();
+		waitForElementToApear(uploadFile1);
+		uploadFile.click();
+		waitForElementToApear(selectFile1);
+		selectFile.sendKeys("/Users/hoailong/Downloads/importfileduplicated.csv");
+		WebElement Element = saveFile;
+		js.executeScript("arguments[0].scrollIntoView();", Element);
+		saveFile.click();
+		nameML.sendKeys(nameMailingList1);
+		acceptCookies.click();
+		addML.click();
+		waitForElementToApear(errorAddML);
+		btnOk.click();
+
+	}
+
+	public void addMailingListIncorrectFormat() {
+		waitForElementToApear(title);
+		btnaddML.click();
+		waitForElementToApear(uploadCSV1);
+		uploadCSV.click();
+		waitForElementToApear(uploadFile1);
+		uploadFile.click();
+		waitForElementToApear(selectFile1);
+		selectFile.sendKeys("/Users/hoailong/Downloads/dre.xlsx");
+		waitForElementToApear(errorAddML);
+		System.out.println("Test Import Incorrect Success");
 	}
 
 	public void addMailingListDraw(String nameMailingList1) throws InterruptedException {
