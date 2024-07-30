@@ -11,15 +11,15 @@ import HomeMeta.TestComponents.BaseTest;
 
 public class AddMailingListImportFile extends BaseTest {
 
-//	@Test(dataProvider = "getData")
-//	public void AddMailingListTest(HashMap<String, String> input) throws InterruptedException {
-//		String nameMailingList1 = "Auto Import Mailing List 1";
-//		landingPage.login(input.get("email"), input.get("password"));
-//		landingPage.addMailingListImportFile(nameMailingList1);
-//		landingPage.VerifyNameMailingList(nameMailingList1);
-//		System.out.println("Import Mailing List Success");
-//
-//	}
+	@Test(dataProvider = "getData")
+	public void AddMailingListTest(HashMap<String, String> input) throws InterruptedException {
+		String nameMailingList1 = "Auto Import Mailing List 1";
+		landingPage.login(input.get("email"), input.get("password"));
+		landingPage.addMailingListImportFile(nameMailingList1);
+		landingPage.VerifyNameMailingList(nameMailingList1);
+		System.out.println("Import Mailing List Success");
+
+	}
 
 	@Test(dataProvider = "getData")
 	public void AddMailingListDuplicatedTest(HashMap<String, String> input) throws InterruptedException {

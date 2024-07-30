@@ -4,12 +4,21 @@
 	<listeners>
 		<listener class-name="HomeMeta.TestComponents.Listeners"/>
 	</listeners>
-  <test name="Create Campaign TemPlate">
+  <test name="Create Campaign TemPlate Payment with Campaign Credits and Credit Card">
 
     <classes>
        
-      <class name="HomeMeta.PageObjects.CreateCampaign"/>
+      <class name="HomeMeta.PageObjects.CreateCampaign">
+		  
+		  <methods>
+			          <include name="CreateCampaignTest" />
+		  </methods>
+		  
+      </class>
 
     </classes>
   </test> <!-- Test -->
+
+  
+  
 </suite> <!-- Suite -->

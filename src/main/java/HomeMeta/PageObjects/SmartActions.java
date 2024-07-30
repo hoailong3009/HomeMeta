@@ -14,7 +14,7 @@ public class SmartActions extends BaseTest {
 	@Test(dataProvider = "getData")
 	public void SmartActions1(HashMap<String, String> input) throws InterruptedException {
 		landingPage.login(input.get("email"), input.get("password"));
-		landingPage.goToCampain();
+		landingPage.createCampaignPaymentCPCredits();
 
 	}
 

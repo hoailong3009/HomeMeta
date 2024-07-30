@@ -4,14 +4,14 @@
   <listeners>
     <listener class-name="HomeMeta.TestComponents.Listeners"/>
   </listeners>
-  <test thread-count="5" name="Create Campaign TemPlate(failed)">
+  <test thread-count="5" name="Create Campaign TemPlate Payment with Campaign Credits(failed)">
     <classes>
       <class name="HomeMeta.PageObjects.CreateCampaign">
         <methods>
           <include name="launchApplication"/>
-          <include name="CreateCampagin" invocation-numbers="0"/>
+          <include name="CreateCampaignPaymentCPCredits" invocation-numbers="0"/>
         </methods>
       </class> <!-- HomeMeta.PageObjects.CreateCampaign -->
     </classes>
-  </test> <!-- Create Campaign TemPlate(failed) -->
+  </test> <!-- Create Campaign TemPlate Payment with Campaign Credits(failed) -->
 </suite> <!-- Failed suite [Create Campaign TemPlate] -->

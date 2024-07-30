@@ -149,7 +149,6 @@ public class CreateCampaigns extends AbstractComponent {
 		nameCampaign.sendKeys(dripCampaignName);
 		saveDripname.click();
 		waitForElementToApear(addDrip1);
-
 		btnaddDrip.click();
 		responeType2.click();
 		typeEmail.click();

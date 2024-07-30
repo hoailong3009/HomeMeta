@@ -4,7 +4,15 @@
 	<listeners>
 		<listener class-name="HomeMeta.TestComponents.Listeners"/>
 	</listeners>
-	
+		  <test thread-count="5" name="Add Mailing List Import File Success">
+    <classes>   
+      <class name="HomeMeta.PageObjects.AddMailingListImportFile">
+		  <methods>
+			          <include name="AddMailingListTest" />
+		  </methods>
+      </class>
+    </classes>
+  </test> <!-- Test -->
 	  <test thread-count="5" name="Add Mailing List Import File Duplicated">
     <classes>   
       <class name="HomeMeta.PageObjects.AddMailingListImportFile">

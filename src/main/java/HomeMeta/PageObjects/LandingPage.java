@@ -151,22 +151,52 @@ public class LandingPage extends AbstractComponent {
 
 	@FindBy(xpath = "//a[@href='/agent-campaigns/?tab=CAMPAIGNS_FORM']")
 	WebElement goCampaign;
+	@FindBy(xpath = "//div[@id='rc-tabs-1-tab-CAMPAIGNS_FORM']")
+	WebElement goCampaign1;
 
 	@FindBy(xpath = "//div[@name='neighborhoods_mailing_list_ids']//div[@class='ant-select-selection-overflow']")
 	WebElement clickSelect;
-	By selectField = By
+	By clickSelect1 = By
 			.xpath("//div[@name='neighborhoods_mailing_list_ids']//div[@class='ant-select-selection-overflow']");
+
+	By managerDashboard = By.xpath("//h1[normalize-space()='Manager Dashboard']");
+
+	@FindBy(xpath = "//input[@id='rc_select_0']")
+	WebElement clickAgent;
+	By clickAgent1 = By.xpath("//input[@id='rc_select_0']");
+
+	@FindBy(xpath = "//div[contains(text(),'Dora Caruso')]")
+	WebElement selectAgent;
 
 	@FindBy(xpath = "//div[@class='ant-select-item ant-select-item-option ant-select-item-option-active']//div[@class='ant-select-item-option-content']")
 	WebElement chooseML;
 
 	@FindBy(xpath = "//div[@name='audience_ids']//div[@class='ant-select-selection-overflow']")
 	WebElement clickTA;
+	By clickTA1 = By.xpath("//div[@name='audience_ids']//div[@class='ant-select-selection-overflow']");
+
 	@FindBy(xpath = "//div[contains(text(),'All Homes')]")
 	WebElement chooseTA;
+	@FindBy(xpath = "//div[@class='field target-field css-21vogu']//label[@class='s-label']")
+	WebElement titleTA;
 
 	@FindBy(xpath = "//p[@title='name']")
 	WebElement chooseTemplate;
+	By chooseTemplate1 = By.xpath("//p[@title='name']");
+	By chooseTemplate2 = By.xpath("//p[@class='ir-title']");
+
+	@FindBy(xpath = "//label[normalize-space()='Campaign Type']")
+	WebElement titleCampaignType;
+
+	@FindBy(xpath = "//span[@title='Any Type']")
+	WebElement campaignType;
+	By campaignType1 = By.xpath("//span[@title='Any Type']");
+
+	@FindBy(xpath = "//div[contains(text(),'Letters Only')]")
+	WebElement chooseCampaignType;
+
+	@FindBy(xpath = "//div[contains(text(),'Postcards only')]")
+	WebElement chooseCampaignType1;
 
 	@FindBy(xpath = "//button[normalize-space()='Submit Order']")
 	WebElement btnSubmit;
@@ -180,9 +210,17 @@ public class LandingPage extends AbstractComponent {
 
 	By btnCreate = By.xpath("//button[normalize-space()='Create Template']");
 
-	@FindBy(xpath = "(//button[@type='button'])[9]")
+	@FindBy(xpath = "//span[contains(text(),'Campaign Credits')]")
 	WebElement btnCampaign;
-	By btnCampaign1 = By.xpath("(//button[@type='button'])[9]");
+	By btnCampaign1 = By.xpath("//span[contains(text(),'Campaign Credits')]");
+
+	@FindBy(xpath = "//span[contains(text(),'Credit Card')]")
+	WebElement btnCreditCard;
+	By btnCreditCard1 = By.xpath("//span[contains(text(),'Credit Card')]");
+
+	@FindBy(xpath = "//span[normalize-space()='Purchase Campaigns']")
+	WebElement purchaseCampaigns;
+	By purchaseCampaigns1 = By.xpath("//span[normalize-space()='Purchase Campaigns']");
 
 	@FindBy(xpath = "//a[@aria-current='page']")
 	WebElement settingMenu;
@@ -201,6 +239,14 @@ public class LandingPage extends AbstractComponent {
 	By btnOk1 = By.xpath("//button[normalize-space()='Okay']");
 	@FindBy(xpath = "//a[@href='/logout']")
 	WebElement logOut;
+
+	By lblPastOrder = By.xpath("//h2[normalize-space()='Past Orders']");
+
+	@FindBy(xpath = "//tbody/tr[2]/td[1]//*[name()='svg']")
+	WebElement svg;
+	@FindBy(xpath = "//div[@role='tooltip']")
+	WebElement tooltip;
+	By tooltip1 = By.xpath("//div[@role='tooltip']");
 
 	@FindBy(xpath = "//p[contains(text(),'Agent')]")
 	private List<WebElement> roleName;
@@ -743,39 +789,194 @@ public class LandingPage extends AbstractComponent {
 
 	}
 
-	public void goToCampain() throws InterruptedException {
+	public void goCP() {
+		driver.get("https://staging-realestate.homemeta.io/agent-campaigns/?tab=CAMPAIGNS_FORM");
+
+	}
+
+	public void goCPManagerRole() {
+		driver.get("https://staging-realestate.homemeta.io/agent-campaigns/?tab=CAMPAIGNS_FORM");
+	}
+
+	public void createCampaignPaymentCPCredits() throws InterruptedException {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		goCampaign.click();
-		waitForElementToApear(btnCreate);
-		WebElement Element = driver
-				.findElement(By.xpath("//div[@class='field target-field css-21vogu']//label[@class='s-label']"));
-		js.executeScript("arguments[0].scrollIntoView();", Element);
-		waitForElementToApear(selectField);
+		goCampaign1.click();
+		waitForElementToApear(clickSelect1);
+		acceptCookies.click();
 		clickSelect.click();
 		chooseML.click();
-		Thread.sleep(1500);
-		clickSelect.click();
 		Thread.sleep(1000);
+		waitForElementToApear(clickTA1);
 		clickTA.click();
 		chooseTA.click();
-		Thread.sleep(3000);
+		WebElement Element = titleTA;
+		js.executeScript("arguments[0].scrollIntoView();", Element);
+		campaignType.click();
+		chooseCampaignType.click();
+		Thread.sleep(4000);
+		waitForElementToApear(chooseTemplate1);
 		chooseTemplate.click();
-		Thread.sleep(1000);
-		WebElement Element1 = driver.findElement(By.xpath("//button[normalize-space()='Submit Order']"));
+		WebElement Element1 = btnSubmit;
 		js.executeScript("arguments[0].scrollIntoView();", Element1);
+		Thread.sleep(1500);
 		waitForElementToApear(btnSubmit1);
 		btnSubmit.click();
 		waitForElementToApear(btnCampaign1);
 		btnCampaign.click();
 		waitForElementToApear(btnViewOrder1);
 		btnViewOrder.click();
-		WebElement Element2 = driver.findElement(By.xpath("//h2[normalize-space()='Past Orders']"));
-		js.executeScript("arguments[0].scrollIntoView();", Element2);
+		Thread.sleep(4000);
+
+	}
+
+	public void createCampaignPaymentCPCredits1() throws InterruptedException {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		goCampaign1.click();
+		waitForElementToApear(clickSelect1);
+		clickSelect.click();
+		chooseML.click();
+		Thread.sleep(1000);
+		waitForElementToApear(clickTA1);
+		clickTA.click();
+		chooseTA.click();
+		WebElement Element = titleTA;
+		js.executeScript("arguments[0].scrollIntoView();", Element);
+		campaignType.click();
+		chooseCampaignType1.click();
+		waitForElementToApear(chooseTemplate2);
+		WebElement Element1 = btnSubmit;
+		js.executeScript("arguments[0].scrollIntoView();", Element1);
+		Thread.sleep(1500);
+		waitForElementToApear(btnSubmit1);
+		btnSubmit.click();
+		waitForElementToApear(btnCampaign1);
+		btnCampaign.click();
+		waitForElementToApear(btnViewOrder1);
+		btnViewOrder.click();
+		Thread.sleep(4000);
+
+	}
+
+	public void createCampaignPaymentCreditCard() throws InterruptedException {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		goCampaign1.click();
+		waitForElementToApear(clickSelect1);
+		clickSelect.click();
+		chooseML.click();
+		Thread.sleep(1000);
+		waitForElementToApear(clickTA1);
+		clickTA.click();
+		chooseTA.click();
+		WebElement Element = titleTA;
+		js.executeScript("arguments[0].scrollIntoView();", Element);
+		campaignType.click();
+		chooseCampaignType.click();
+		Thread.sleep(4000);
+		waitForElementToApear(chooseTemplate1);
+		chooseTemplate.click();
+		WebElement Element1 = btnSubmit;
+		js.executeScript("arguments[0].scrollIntoView();", Element1);
+		Thread.sleep(1500);
+		waitForElementToApear(btnSubmit1);
+		btnSubmit.click();
+		waitForElementToApear(btnCreditCard1);
+		btnCreditCard.click();
+		waitForElementToApear(purchaseCampaigns1);
+		purchaseCampaigns.click();
+		waitForElementToApear(btnViewOrder1);
+		btnViewOrder.click();
+		Thread.sleep(4000);
+
+	}
+
+	public void createCampaignPaymentCreditCard1() throws InterruptedException {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		goCampaign1.click();
+		waitForElementToApear(chooseTemplate1);
+		Thread.sleep(2000);
+		clickSelect.click();
+		chooseML.click();
+		Thread.sleep(1000);
+		waitForElementToApear(clickTA1);
+		clickTA.click();
+		chooseTA.click();
+		WebElement Element = titleTA;
+		js.executeScript("arguments[0].scrollIntoView();", Element);
+		campaignType.click();
+		chooseCampaignType1.click();
+		waitForElementToApear(chooseTemplate2);
+
+		WebElement Element1 = btnSubmit;
+		js.executeScript("arguments[0].scrollIntoView();", Element1);
+		Thread.sleep(1500);
+		waitForElementToApear(btnSubmit1);
+		btnSubmit.click();
+		waitForElementToApear(btnCreditCard1);
+		btnCreditCard.click();
+		waitForElementToApear(purchaseCampaigns1);
+		purchaseCampaigns.click();
+		waitForElementToApear(btnViewOrder1);
+		btnViewOrder.click();
+
+	}
+
+	public void createCampaignManagerRole() throws InterruptedException {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		waitForElementToApear(managerDashboard);
+		goCPManagerRole();
+		Thread.sleep(2000);
+		waitForElementToApear(clickAgent1);
+		acceptCookies.click();
+		clickAgent.click();
+		selectAgent.click();
+		waitForElementToApear(clickSelect1);
+		clickSelect.click();
+		chooseML.click();
+		waitForElementToApear(clickTA1);
+		clickTA.click();
+		chooseTA.click();
+		WebElement Element = titleTA;
+		js.executeScript("arguments[0].scrollIntoView();", Element);
+		campaignType.click();
+		chooseCampaignType.click();
+		Thread.sleep(4000);
+		waitForElementToApear(chooseTemplate1);
+		chooseTemplate.click();
+		WebElement Element1 = btnSubmit;
+		js.executeScript("arguments[0].scrollIntoView();", Element1);
+		Thread.sleep(1500);
+		waitForElementToApear(btnSubmit1);
+		btnSubmit.click();
+		waitForElementToApear(btnCampaign1);
+		btnCampaign.click();
+		waitForElementToApear(btnViewOrder1);
+		btnViewOrder.click();
+		Thread.sleep(4000);
+		logOut.click();
+
+	}
+
+	public void verifyCampaignManagerRole() throws InterruptedException {
+		String tooltipExpected = "Created by Manager";
+		waitForElementToApear(title);
+		goToPastOrder();
+		waitForElementToApear(lblPastOrder);
+		Thread.sleep(2000);
+		Actions action = new Actions(driver);
+		action.moveToElement(svg).perform();
+		waitForElementToApear(tooltip1);
+		String tooltipActual = tooltip.getText();
+		assertEquals(tooltipActual, tooltipExpected);
 
 	}
 
 	public void goTo() {
 		driver.get("https://staging-realestate.homemeta.io");
+
+	}
+
+	public void goToPastOrder() {
+		driver.get("https://staging-realestate.homemeta.io/agent-campaigns/?tab=PAST_ORDERS");
 
 	}
 

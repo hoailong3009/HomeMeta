@@ -12,9 +12,26 @@ import HomeMeta.TestComponents.BaseTest;
 public class CreateCampaign extends BaseTest {
 
 	@Test(dataProvider = "getData")
-	public void CreateCampaign1(HashMap<String, String> input) throws InterruptedException {
+	public void CreateCampaignTest(HashMap<String, String> input) throws InterruptedException {
 		landingPage.login(input.get("email"), input.get("password"));
-		landingPage.goToCampain();
+		landingPage.createCampaignPaymentCPCredits();
+		landingPage.createCampaignPaymentCPCredits1();
+		landingPage.createCampaignPaymentCreditCard();
+		landingPage.createCampaignPaymentCreditCard1();
+
+	}
+
+	@Test(dataProvider = "getData1")
+	public void CreateCampaignManagerTest(HashMap<String, String> input) throws InterruptedException {
+		landingPage.login(input.get("email"), input.get("password"));
+		landingPage.createCampaignManagerRole();
+
+	}
+
+	@Test(dataProvider = "getData")
+	public void VerifyCampaignManagerRole(HashMap<String, String> input) throws InterruptedException {
+		landingPage.login(input.get("email"), input.get("password"));
+		landingPage.verifyCampaignManagerRole();
 
 	}
 
@@ -23,5 +40,12 @@ public class CreateCampaign extends BaseTest {
 		List<HashMap<String, String>> data = getJsonData(
 				System.getProperty("user.dir") + "/src/main/java/HomeMeta/data/DataLogin.json");
 		return new Object[][] { { data.get(0) } };
+	}
+
+	@DataProvider
+	public Object[][] getData1() throws IOException {
+		List<HashMap<String, String>> data = getJsonData(
+				System.getProperty("user.dir") + "/src/main/java/HomeMeta/data/DataLogin.json");
+		return new Object[][] { { data.get(1) } };
 	}
 }
