@@ -170,6 +170,8 @@ public class LandingPage extends AbstractComponent {
 
 	@FindBy(xpath = "//div[@class='ant-select-item ant-select-item-option ant-select-item-option-active']//div[@class='ant-select-item-option-content']")
 	WebElement chooseML;
+	By chooseML1 = By.xpath(
+			"//div[@class='ant-select-item ant-select-item-option ant-select-item-option-active']//div[@class='ant-select-item-option-content']");
 
 	@FindBy(xpath = "//div[@name='audience_ids']//div[@class='ant-select-selection-overflow']")
 	WebElement clickTA;
@@ -177,8 +179,13 @@ public class LandingPage extends AbstractComponent {
 
 	@FindBy(xpath = "//div[contains(text(),'All Homes')]")
 	WebElement chooseTA;
+	By chooseTA1 = By.xpath("//div[contains(text(),'All Homes')]");
+
 	@FindBy(xpath = "//div[@class='field target-field css-21vogu']//label[@class='s-label']")
 	WebElement titleTA;
+
+	@FindBy(xpath = "//div[@name='neighborhoods_mailing_list_ids']//label[@class='s-label']")
+	WebElement titleML;
 
 	@FindBy(xpath = "//p[@title='name']")
 	WebElement chooseTemplate;
@@ -194,6 +201,7 @@ public class LandingPage extends AbstractComponent {
 
 	@FindBy(xpath = "//div[contains(text(),'Letters Only')]")
 	WebElement chooseCampaignType;
+	By chooseCampaignType2 = By.xpath("//div[contains(text(),'Letters Only')]");
 
 	@FindBy(xpath = "//div[contains(text(),'Postcards only')]")
 	WebElement chooseCampaignType1;
@@ -800,7 +808,8 @@ public class LandingPage extends AbstractComponent {
 
 	public void createCampaignPaymentCPCredits() throws InterruptedException {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		goCampaign1.click();
+		waitForElementToApear(title);
+		goCP();
 		waitForElementToApear(clickSelect1);
 		acceptCookies.click();
 		clickSelect.click();
@@ -808,6 +817,7 @@ public class LandingPage extends AbstractComponent {
 		Thread.sleep(1000);
 		waitForElementToApear(clickTA1);
 		clickTA.click();
+		waitForElementToApear(chooseTA1);
 		chooseTA.click();
 		WebElement Element = titleTA;
 		js.executeScript("arguments[0].scrollIntoView();", Element);
@@ -831,13 +841,15 @@ public class LandingPage extends AbstractComponent {
 
 	public void createCampaignPaymentCPCredits1() throws InterruptedException {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		goCampaign1.click();
+		goCP();
 		waitForElementToApear(clickSelect1);
 		clickSelect.click();
+		waitForElementToApear(chooseML1);
 		chooseML.click();
 		Thread.sleep(1000);
 		waitForElementToApear(clickTA1);
 		clickTA.click();
+		waitForElementToApear(chooseTA1);
 		chooseTA.click();
 		WebElement Element = titleTA;
 		js.executeScript("arguments[0].scrollIntoView();", Element);
@@ -859,13 +871,15 @@ public class LandingPage extends AbstractComponent {
 
 	public void createCampaignPaymentCreditCard() throws InterruptedException {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		goCampaign1.click();
+		goCP();
 		waitForElementToApear(clickSelect1);
 		clickSelect.click();
+		waitForElementToApear(chooseML1);
 		chooseML.click();
 		Thread.sleep(1000);
 		waitForElementToApear(clickTA1);
 		clickTA.click();
+		waitForElementToApear(chooseTA1);
 		chooseTA.click();
 		WebElement Element = titleTA;
 		js.executeScript("arguments[0].scrollIntoView();", Element);
@@ -891,14 +905,15 @@ public class LandingPage extends AbstractComponent {
 
 	public void createCampaignPaymentCreditCard1() throws InterruptedException {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		goCampaign1.click();
-		waitForElementToApear(chooseTemplate1);
-		Thread.sleep(2000);
+		goCP();
+		waitForElementToApear(clickSelect1);
 		clickSelect.click();
+		waitForElementToApear(chooseML1);
 		chooseML.click();
 		Thread.sleep(1000);
 		waitForElementToApear(clickTA1);
 		clickTA.click();
+		waitForElementToApear(chooseTA1);
 		chooseTA.click();
 		WebElement Element = titleTA;
 		js.executeScript("arguments[0].scrollIntoView();", Element);
@@ -925,19 +940,25 @@ public class LandingPage extends AbstractComponent {
 		waitForElementToApear(managerDashboard);
 		goCPManagerRole();
 		Thread.sleep(2000);
-		waitForElementToApear(clickAgent1);
 		acceptCookies.click();
+		Thread.sleep(1000);
+		waitForElementToApear(clickAgent1);
+		Thread.sleep(1000);
 		clickAgent.click();
 		selectAgent.click();
+		Thread.sleep(1500);
 		waitForElementToApear(clickSelect1);
+		Thread.sleep(1500);
 		clickSelect.click();
 		chooseML.click();
 		waitForElementToApear(clickTA1);
 		clickTA.click();
 		chooseTA.click();
-		WebElement Element = titleTA;
+		WebElement Element = titleML;
 		js.executeScript("arguments[0].scrollIntoView();", Element);
+		Thread.sleep(1000);
 		campaignType.click();
+		waitForElementToApear(chooseCampaignType2);
 		chooseCampaignType.click();
 		Thread.sleep(4000);
 		waitForElementToApear(chooseTemplate1);
@@ -953,6 +974,7 @@ public class LandingPage extends AbstractComponent {
 		btnViewOrder.click();
 		Thread.sleep(4000);
 		logOut.click();
+		waitForElementToApear(emailLogin1);
 
 	}
 

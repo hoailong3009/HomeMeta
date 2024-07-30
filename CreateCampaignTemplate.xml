@@ -18,7 +18,21 @@
 
     </classes>
   </test> <!-- Test -->
+  <test name="Create Campaign TemPlate with Manager Role">
 
+    <classes>
+       
+      <class name="HomeMeta.PageObjects.CreateCampaign">
+		  
+		  <methods>
+			          <include name="CreateCampaignManagerTest" />
+			          <include name="VerifyCampaignManagerRole" />
+		  </methods>
+		  
+      </class>
+
+    </classes>
+  </test> <!-- Test -->
   
   
 </suite> <!-- Suite -->
